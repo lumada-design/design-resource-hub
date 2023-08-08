@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "champions",
+  "info": {
+    "singularName": "champion",
+    "pluralName": "champions",
+    "displayName": "Champion",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "job": {
+      "type": "string"
+    },
+    "organization": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "avatar": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": false
+    }
+  }
+}
