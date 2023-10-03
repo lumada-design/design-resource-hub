@@ -3,9 +3,9 @@ import { SWRConfig } from "swr";
 import { BrowserRouter as Router } from "react-router-dom";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
-import { Header } from "components/common";
 import Routes from "lib/routes";
 import { fetcher } from "lib/api/fetcher";
+import { Header } from "components/common";
 
 const App = () => (
   <Router>

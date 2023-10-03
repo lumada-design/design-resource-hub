@@ -2,7 +2,7 @@ import { lazy } from "react";
 import { Routes, Route } from "react-router-dom";
 
 const Overview = lazy(() => import("pages/Overview"));
-const Resource = lazy(() => import("pages/Resource"));
+const Resource = lazy(() => import("pages/Resource/Resource"));
 const NotFound = lazy(() => import("pages/NotFound"));
 
 const AppRoutes = () => (

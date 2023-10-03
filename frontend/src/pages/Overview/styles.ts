@@ -1,11 +1,9 @@
 import { css } from "@emotion/css";
 import { theme } from "@hitachivantara/uikit-styles";
 
-const styles = {
+export const styles = {
   container: css({
-    paddingTop: `calc(${theme.header.height})`,
+    paddingTop: theme.spacing(6),
     minHeight: "100vh",
   }),
 };
-
-export default styles;

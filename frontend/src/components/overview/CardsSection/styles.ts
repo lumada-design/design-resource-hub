@@ -7,7 +7,7 @@ export const styles = {
       cursor: "pointer",
     },
   }),
-  container: css({
+  hide: css({
     display: "none",
   }),
   tag: css({

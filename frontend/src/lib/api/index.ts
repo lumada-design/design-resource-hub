@@ -10,12 +10,11 @@ export const useResources = (
   const baseKey = "/resources?populate=deep";
   const searchKey = `&filters[$or][0][name][$contains]=${searchFilter}&filters[$or][1][description][$contains]=${searchFilter}`;
   const tagsKey = tagsFilter
-    ?.map((tag, idx) => `&filters[$or][${idx}][tags][name][$contains]=${tag}`)
+    ?.map((tag, idx) => `&filters[$or][${idx}][tags][id][$contains]=${tag}`)
     .join("");
 
   return useSWR(
-    `${baseKey}${searchFilter?.length ? searchKey : ""}${
-      tagsFilter?.length ? tagsKey : ""
+    `${baseKey}${searchFilter?.length ? searchKey : ""}${tagsFilter?.length ? tagsKey : ""
     }`,
     fetcher
   );
