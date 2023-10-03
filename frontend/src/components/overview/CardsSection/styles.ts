@@ -1,6 +1,6 @@
 import { css } from "@emotion/css";
 
-export const styles = {
+const styles = {
   root: css({
     outline: "none",
     "&:hover": {
@@ -14,3 +14,5 @@ export const styles = {
     marginRight: "0.5rem",
   }),
 };
+
+export default styles;

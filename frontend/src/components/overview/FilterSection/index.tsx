@@ -5,11 +5,11 @@ import {
 } from "@hitachivantara/uikit-react-core";
 
 import { useFiltersStore } from "lib/store/filters";
-import { useResources } from "lib/api";
-import { useTags } from "lib/api";
-import { styles } from "./styles";
+import { useResources } from "lib/api/resource";
+import { useTags } from "lib/api/tag";
+import classes from "./styles";
 
-interface Data {
+interface Tags {
   data: Record<string, unknown>[];
   meta: Record<string, unknown>;
 }
@@ -19,7 +19,7 @@ interface Tag {
   name: string;
 }
 
-const groupTags = (tags: Data) => {
+const groupTags = (tags: Tags) => {
   return tags?.data.reduce((acc: any, tag: any) => {
     const { name: tagName } = tag.attributes;
     const { name: tagCategory } = tag.attributes.tag_category.data.attributes;
@@ -47,7 +47,9 @@ export const FilterSection = () => {
     Object.keys(groupedTags).forEach((category: string) => {
       groupedTags[category].forEach((tag: Tag) => {
         const count = resources.data.filter((resource: any) => {
-          return resource.attributes.tags.data.find((t: Tag) => t.id === tag.id);
+          return resource.attributes.tags.data.find(
+            (t: Tag) => t.id === tag.id,
+          );
         });
         tag.name = `${tag.name} (${count.length})`;
       });
@@ -71,11 +73,11 @@ export const FilterSection = () => {
       <HvStack direction="column" spacing="sm">
         {Object.keys(groupedTags).map((category: string) => (
           <span key={category}>
-            <HvTypography variant="label">{category}</HvTypography>
+            <HvTypography paragraph className={classes.label} variant="label">{category}</HvTypography>
             {groupedTags[category].map((tag: Tag) => (
               <HvCheckBox
                 key={tag.id}
-                classes={{ root: styles.root }}
+                classes={{ root: classes.root }}
                 label={tag.name}
                 onChange={() => handleCheck(tag.id)}
                 checked={tagsFilter.includes(tag.id)}

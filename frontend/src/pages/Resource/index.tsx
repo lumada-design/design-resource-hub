@@ -7,11 +7,10 @@ import {
 } from "components/resource";
 import { Footer } from "components/common";
 
-import { useResource } from "lib/api";
+import { useResource } from "lib/api/resource";
 
 const Resource = () => {
   const { data: resource } = useResource();
-  console.log('resource: ', resource);
 
   return (
     resource && (

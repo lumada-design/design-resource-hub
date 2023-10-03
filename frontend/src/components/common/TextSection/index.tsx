@@ -1,23 +1,24 @@
 import { HvTypography, HvTag } from "@hitachivantara/uikit-react-core";
 
-import styles from "./styles";
+import classes from "./styles";
 
 export const TextSection = ({
   title,
   description,
   tags,
+  style
 }: Record<string, any>) => {
   return (
-    <div className={styles.root}>
+    <div className={classes.root} style={{ ...style }}>
       <HvTypography variant="title3">{title}</HvTypography>
-      <div className={styles.separator} />
-      <HvTypography className={styles.description}>{description}</HvTypography>
+      <div className={classes.separator} />
+      <HvTypography className={classes.description}>{description}</HvTypography>
       <span>
         {tags?.data.map((tag: Record<string, any>) => {
           const { name, color } = tag.attributes;
           return (
             <HvTag
-              className={styles.tag}
+              className={classes.tag}
               key={tag.id}
               label={name}
               color={color}
@@ -26,6 +27,6 @@ export const TextSection = ({
           );
         })}
       </span>
-    </div>
+    </div >
   );
 };

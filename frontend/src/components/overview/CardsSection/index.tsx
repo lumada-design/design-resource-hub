@@ -10,7 +10,7 @@ import {
 import { useNavigate } from "react-router-dom";
 
 import { API_URL } from "lib/api/constants";
-import { styles } from "./styles";
+import classes from "./styles";
 
 interface Data {
   id: string;
@@ -36,8 +36,8 @@ export const CardsSection = ({ data }: CardsProps) => {
             <HvCard
               bgcolor="atmo1"
               statusColor="negative"
-              className={styles.root}
-              classes={{ semanticBar: styles.hide }}
+              className={classes.root}
+              classes={{ semanticBar: classes.hide }}
               selectable
               onClick={() => navigate(resourceUrl)}
             >
@@ -56,7 +56,7 @@ export const CardsSection = ({ data }: CardsProps) => {
                   const { name, color } = tag.attributes;
                   return (
                     <HvTag
-                      className={styles.tag}
+                      className={classes.tag}
                       key={tag.id}
                       label={name}
                       color={color}

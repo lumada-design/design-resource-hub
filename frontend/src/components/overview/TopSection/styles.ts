@@ -5,10 +5,9 @@ import imgUrl from "assets/banner.png";
 
 const styles = {
   root: css({
-    paddingTop: theme.header.height,
+    paddingTop: theme.space.lg,
     background: `url(${imgUrl}) no-repeat`,
     backgroundSize: "cover",
-    height: "330px",
   }),
   container: css({
     padding: theme.space.lg,

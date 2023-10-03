@@ -5,7 +5,7 @@ import { fetcher } from "./fetcher";
 
 export const useResources = (
   searchFilter?: string,
-  tagsFilter?: TagsFilter
+  tagsFilter?: TagsFilter,
 ) => {
   const baseKey = "/resources?populate=deep";
   const searchKey = `&filters[$or][0][name][$contains]=${searchFilter}&filters[$or][1][description][$contains]=${searchFilter}`;
@@ -14,9 +14,10 @@ export const useResources = (
     .join("");
 
   return useSWR(
-    `${baseKey}${searchFilter?.length ? searchKey : ""}${tagsFilter?.length ? tagsKey : ""
+    `${baseKey}${searchFilter?.length ? searchKey : ""}${
+      tagsFilter?.length ? tagsKey : ""
     }`,
-    fetcher
+    fetcher,
   );
 };
 
@@ -24,10 +25,4 @@ export const useResource = () => {
   const { name } = useParams();
 
   return useSWR(`/resources?filters[name][$eq]=${name}&populate=deep`, fetcher);
-};
-
-export const useTags = () => {
-  const key = `/tags?populate=deep`;
-
-  return useSWR(key, fetcher);
 };

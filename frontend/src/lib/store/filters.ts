@@ -17,5 +17,5 @@ export const useFiltersStore = create(
       set((state) => {
         state.tagsFilter = tagsFilter;
       }),
-  }))
+  })),
 );

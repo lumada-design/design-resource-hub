@@ -1,34 +1,32 @@
 import { HvContainer, HvTypography } from "@hitachivantara/uikit-react-core";
 
 import { API_URL } from "lib/api/constants";
-import styles from "./styles";
+import classes from "./styles";
 
 export const ChampionsSection = ({ data }: Record<string, any>) => {
   const { champions } = data[0].attributes;
-  console.log('champions: ', champions);
 
   return (
-    <div className={styles.root}>
+    <div className={classes.root}>
       <HvContainer maxWidth="lg">
         <div style={{ width: "100%" }}>
           <HvTypography variant="title3">
             Resource Champions & Organization
           </HvTypography>
-          <div className={styles.separator} />
-          <div className={styles.champions}>
+          <div className={classes.separator} />
+          <div className={classes.champions}>
             {champions?.data.map((champion: Record<string, any>) => {
-              console.log('champion: ', champion);
               const { name, job, organization, avatar } = champion.attributes;
               const avatarUrl = avatar.data.attributes.url;
 
               return (
-                <div key={champion.id} className={styles.container}>
+                <div key={champion.id} className={classes.container}>
                   <img
                     src={`${API_URL}${avatarUrl}`}
                     alt="icon"
-                    className={styles.picture}
+                    className={classes.picture}
                   />
-                  <div className={styles.text}>
+                  <div className={classes.text}>
                     <HvTypography
                       variant="caption1"
                       style={{ fontWeight: 600 }}

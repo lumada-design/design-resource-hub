@@ -19,16 +19,22 @@ const styles = {
     zIndex: theme.zIndices.hide,
     objectFit: "cover",
   }),
-  tag: css({
-    marginRight: theme.space.xs,
-  }),
-  description: css({
+  text: css({
     marginTop: theme.space.sm,
   }),
+  link: css({
+    marginTop: theme.space.sm,
+    marginLeft: theme.space.sm,
+  }),
   button: css({
-    marginBottom: theme.space.sm,
+    marginBottom: theme.space.md,
     position: "absolute",
-    top: theme.spacing(5)
+    top: theme.spacing(2)
+  }),
+  buttonUp: css({
+    marginBottom: theme.space.md,
+    position: "absolute",
+    top: theme.spacing(4)
   }),
 };
 

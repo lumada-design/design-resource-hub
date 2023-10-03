@@ -5,8 +5,8 @@ import { HvGrid, HvInput } from "@hitachivantara/uikit-react-core";
 import { TopSection, CardsSection, FilterSection } from "components/overview";
 import { Container, Footer } from "components/common";
 import { useFiltersStore } from "lib/store/filters";
-import { useResources } from "lib/api";
-import { styles } from "./styles";
+import { useResources } from "lib/api/resource";
+import classes from "./styles";
 
 const Resources = () => {
   const theme = useTheme();
@@ -16,7 +16,7 @@ const Resources = () => {
   const { data: resources } = useResources(searchFilter, tagsFilter);
 
   const handleSearch = (
-    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setSearchFilter(event.target.value);
   };
@@ -24,7 +24,7 @@ const Resources = () => {
   return (
     <>
       <TopSection />
-      <Container maxWidth="lg" classes={{ container: styles.container }}>
+      <Container maxWidth="lg" classes={{ container: classes.container }}>
         <HvGrid container>
           {isMdUp && (
             <HvGrid item md={3} xs={12}>
