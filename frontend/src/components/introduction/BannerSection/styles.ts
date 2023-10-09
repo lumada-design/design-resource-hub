@@ -6,18 +6,8 @@ const styles = {
     display: "flex",
     position: "relative",
     alignItems: "center",
-    marginTop: theme.header.height,
     minHeight: 300,
-    boxShadow: "inset 0 15px 10px -15px rgba(65,65,65,0.12)",
-  }),
-  image: css({
-    position: "absolute",
-    top: 0,
-    right: 0,
-    width: "100%",
-    height: "100%",
-    zIndex: theme.zIndices.hide,
-    objectFit: "cover",
+    // boxShadow: "inset 0 15px 10px -15px rgba(65,65,65,0.12)",
   }),
   text: css({
     marginTop: theme.space.sm,
@@ -29,12 +19,12 @@ const styles = {
   button: css({
     marginBottom: theme.space.md,
     position: "absolute",
-    top: theme.spacing(2)
+    top: theme.spacing(2),
   }),
   buttonUp: css({
     marginBottom: theme.space.md,
     position: "absolute",
-    top: theme.spacing(4)
+    top: theme.spacing(4),
   }),
 };
 

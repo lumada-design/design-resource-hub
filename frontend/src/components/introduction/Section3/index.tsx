@@ -9,7 +9,11 @@ export const Section3 = ({ data }: Record<string, any>) => {
   return (
     <div className={classes.root}>
       <HvContainer className={classes.container} maxWidth="lg">
-        <TextSection style={{ width: 650 }} title={section_3_title} description={section_3_description} />
+        <TextSection
+          style={{ width: 650 }}
+          title={section_3_title}
+          description={section_3_description}
+        />
       </HvContainer>
     </div>
   );

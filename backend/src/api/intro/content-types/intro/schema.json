@@ -12,7 +12,7 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
+    "title": {
       "type": "string"
     },
     "description": {
@@ -52,6 +52,18 @@
     },
     "section_4_description": {
       "type": "text"
+    },
+    "banner_button": {
+      "type": "string"
+    },
+    "banner_link": {
+      "type": "string"
+    },
+    "banner_button_target": {
+      "type": "string"
+    },
+    "banner_link_target": {
+      "type": "string"
     }
   }
 }

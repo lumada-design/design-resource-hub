@@ -1,3 +1,3 @@
+export * from "./BannerSection";
 export * from "./CardsSection";
 export * from "./FilterSection";
-export * from "./TopSection";

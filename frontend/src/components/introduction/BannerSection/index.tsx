@@ -4,31 +4,39 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import {
   HvTypography,
   HvContainer,
-  HvButton
+  HvButton,
 } from "@hitachivantara/uikit-react-core";
-import {
-  Backwards
-} from "@hitachivantara/uikit-react-icons";
+import { Backwards } from "@hitachivantara/uikit-react-icons";
 
 import { API_URL } from "lib/api/constants";
+import { formatText } from "lib/utils";
 import classes from "./styles";
 
-export const TopSection = ({ data }: Record<string, any>) => {
+export const BannerSection = ({ data }: Record<string, any>) => {
   const navigate = useNavigate();
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
-  const { name, description, banner_image } = data.attributes;
+  const {
+    title,
+    description,
+    banner_image,
+    banner_button,
+    banner_button_target,
+    banner_link,
+    banner_link_target,
+  } = data.attributes;
   const imageUrl = banner_image.data.attributes.url;
 
   return (
-    <div className={classes.root}>
+    <div
+      className={classes.root}
+      style={{
+        background: `url(${API_URL}${imageUrl}) no-repeat`,
+        backgroundSize: "cover",
+      }}
+    >
       <HvContainer maxWidth="lg">
-        <img
-          src={`${API_URL}${imageUrl}`}
-          alt="banner"
-          className={classes.image}
-        />
         <span>
           <HvButton
             aria-label="Back"
@@ -39,23 +47,28 @@ export const TopSection = ({ data }: Record<string, any>) => {
           >
             Back
           </HvButton>
-          <HvTypography variant="title1">{name}</HvTypography>
+          <HvTypography variant="title1">{formatText(title)}</HvTypography>
           <HvTypography className={classes.text}>
-            {description}
+            {formatText(description)}
           </HvTypography>
         </span>
-        <HvButton style={{ marginTop: 20 }} variant="primary">
-          Submit a Resource
+        <HvButton
+          style={{ marginTop: 20 }}
+          variant="primary"
+          onClick={() => navigate(banner_button_target)}
+        >
+          {banner_button}
         </HvButton>
-        <HvTypography className={classes.link}
+        <HvTypography
+          className={classes.link}
           component="a"
-          href="https://lumada-design.github.io/uikit/master"
+          href={banner_link_target}
           target="blank"
           link
         >
-          Guidelines and Acceptance Criteria
+          {banner_link}
         </HvTypography>
       </HvContainer>
-    </div >
+    </div>
   );
 };

@@ -1,5 +1,5 @@
 import {
-  TopSection,
+  BannerSection,
   Section1,
   Section2,
   Section3,
@@ -15,11 +15,11 @@ const Resource = () => {
   return (
     intro && (
       <>
-        <TopSection data={intro?.data} />
-        <Section1 data={intro?.data} />
-        <Section2 data={intro?.data} />
-        <Section3 data={intro?.data} />
-        <Section4 data={intro?.data} />
+        <BannerSection data={intro.data} />
+        <Section1 data={intro.data} />
+        <Section2 data={intro.data} />
+        <Section3 data={intro.data} />
+        <Section4 data={intro.data} />
         <Footer />
       </>
     )

@@ -73,7 +73,9 @@ export const FilterSection = () => {
       <HvStack direction="column" spacing="sm">
         {Object.keys(groupedTags).map((category: string) => (
           <span key={category}>
-            <HvTypography paragraph className={classes.label} variant="label">{category}</HvTypography>
+            <HvTypography paragraph className={classes.label} variant="label">
+              {category}
+            </HvTypography>
             {groupedTags[category].map((tag: Tag) => (
               <HvCheckBox
                 key={tag.id}
