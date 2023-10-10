@@ -1,27 +1,16 @@
-import { Suspense } from "react";
-import { HvContainer } from "@hitachivantara/uikit-react-core";
-
-import { Loading, LoadingProps } from "components/common/Loading";
-import classes from "./styles";
-
-interface ContainerProps {
-  maxWidth?: "xs" | "sm" | "md" | "lg" | "xl" | false;
-  children: NonNullable<React.ReactNode>;
-  loadingProps?: LoadingProps;
-  classes?: typeof classes;
-}
+import { HvContainer, HvContainerProps } from "@hitachivantara/uikit-react-core";
 
 export const Container = ({
-  maxWidth,
+  maxWidth = "lg",
   children,
-  loadingProps,
   classes,
-}: ContainerProps) => (
+  className,
+}: HvContainerProps) => (
   <HvContainer
     maxWidth={maxWidth}
-    classes={{ root: classes?.container, ...classes }}
-    {...{ component: "main" }}
+    classes={{ ...classes }}
+    className={className}
   >
-    <Suspense fallback={<Loading {...loadingProps} />}>{children}</Suspense>
-  </HvContainer>
+    {children}
+  </HvContainer >
 );

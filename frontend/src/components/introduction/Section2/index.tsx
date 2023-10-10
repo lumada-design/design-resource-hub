@@ -1,20 +1,18 @@
-import { HvContainer } from "@hitachivantara/uikit-react-core";
-
-import { TextSection } from "components/common";
+import { Container, TextSection } from "components/common";
 import classes from "./styles";
 
 export const Section2 = ({ data }: Record<string, any>) => {
-  const { section_2_title, section_2_description } = data.attributes;
+  const { section2_title, section2_description } = data.attributes;
 
   return (
     <div className={classes.root}>
-      <HvContainer className={classes.container} maxWidth="lg">
+      <Container classes={{ root: classes.container }}>
         <TextSection
           style={{ width: 650 }}
-          title={section_2_title}
-          description={section_2_description}
+          title={section2_title}
+          description={section2_description}
         />
-      </HvContainer>
+      </Container>
     </div>
   );
 };

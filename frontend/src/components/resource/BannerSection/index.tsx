@@ -1,12 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import {
   HvTypography,
-  HvContainer,
   HvTag,
   HvButton,
 } from "@hitachivantara/uikit-react-core";
 import { Backwards } from "@hitachivantara/uikit-react-icons";
 
+import { Container } from "components/common";
 import { API_URL } from "lib/api/constants";
 import classes from "./styles";
 import { formatText } from "lib/utils";
@@ -25,7 +25,7 @@ export const BannerSection = ({ data }: Record<string, any>) => {
         backgroundSize: "cover",
       }}
     >
-      <HvContainer maxWidth="lg">
+      <Container>
         <span>
           <HvButton
             aria-label="Back"
@@ -55,7 +55,7 @@ export const BannerSection = ({ data }: Record<string, any>) => {
             {formatText(description)}
           </HvTypography>
         </span>
-      </HvContainer>
+      </Container>
     </div>
   );
 };

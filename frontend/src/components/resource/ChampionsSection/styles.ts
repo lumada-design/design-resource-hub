@@ -8,7 +8,7 @@ const styles = {
     textAlign: "center",
     alignItems: "center",
     minHeight: 300,
-    background: theme.colors.atmo1,
+    background: theme.colors.atmo2,
   }),
   separator: css({
     width: 55,

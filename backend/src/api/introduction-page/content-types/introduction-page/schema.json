@@ -1,0 +1,63 @@
+{
+  "kind": "singleType",
+  "collectionName": "introduction_pages",
+  "info": {
+    "singularName": "introduction-page",
+    "pluralName": "introduction-pages",
+    "displayName": "Introduction Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner_title": {
+      "type": "text"
+    },
+    "banner_image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "section1_title": {
+      "type": "string"
+    },
+    "section1_description": {
+      "type": "text"
+    },
+    "section2_title": {
+      "type": "string"
+    },
+    "section2_description": {
+      "type": "text"
+    },
+    "section3_title": {
+      "type": "string"
+    },
+    "section3_content1": {
+      "type": "text"
+    },
+    "section3_content1_button_label": {
+      "type": "string"
+    },
+    "section3_content1_button_target": {
+      "type": "string"
+    },
+    "section3_content2": {
+      "type": "text"
+    },
+    "section3_content2_button_label": {
+      "type": "string"
+    },
+    "section3_content2_button_target": {
+      "type": "string"
+    }
+  }
+}

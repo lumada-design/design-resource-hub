@@ -4,12 +4,10 @@ import { theme } from "@hitachivantara/uikit-styles";
 const styles = {
   root: css({
     display: "flex",
-    alignContent: "center",
-    textAlign: "center",
     alignItems: "center",
+    textAlign: "center",
     minHeight: 250,
-    maxWidth: "700px",
-    padding: theme.space.md,
+    background: theme.colors.base_light,
   }),
   separator: css({
     width: 55,

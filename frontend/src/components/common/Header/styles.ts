@@ -2,43 +2,42 @@ import { css } from "@emotion/css";
 import { theme } from "@hitachivantara/uikit-styles";
 
 const styles = {
-  section1: css({
+  container: css({
+    display: "flex",
+  }),
+  area1: css({
     display: "flex",
     alignItems: "center",
     height: 50,
     backgroundColor: theme.colors.base_light,
-    paddingLeft: theme.space.md,
   }),
   logo: css({
     cursor: "pointer",
   }),
-  section2: css({
-    display: "flex",
+  area2: css({
     alignItems: "center",
     height: 65,
-    backgroundColor: theme.colors.atmo2,
-    paddingLeft: theme.spacing(5),
+    background: "#e5e5e5",
   }),
   brand: css({
+    display: "flex",
+    alignItems: "center",
     "& > *": {
       display: "inline",
     },
   }),
   menu: css({
-    listStyle: "none",
-    position: "absolute",
-    right: theme.spacing(2),
+    marginLeft: "auto",
     "& li": {
       display: "flex",
       float: "left",
-      marginLeft: theme.space.xs,
       height: 65,
       alignItems: "center",
-      padding: theme.space.xs,
+      padding: theme.space.sm,
     },
     "& li:hover": {
       cursor: "pointer",
-      backgroundColor: theme.colors.brand,
+      backgroundColor: "#b1000e",
       "& *": {
         color: theme.colors.base_light,
       },

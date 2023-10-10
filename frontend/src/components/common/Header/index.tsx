@@ -2,7 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import HitachiLogo from "assets/HitachiLogo";
-import { useHeader } from "lib/api/header";
+import { Container } from "components/common";
+import { useBrand } from "lib/api/brand";
 
 import classes from "./styles";
 
@@ -23,35 +24,39 @@ const parseLinks = (links: string) => {
 
 export const Header = () => {
   const navigate = useNavigate();
-  const { data: header } = useHeader();
+  const { data: brand } = useBrand();
 
-  if (!header) return null;
+  if (!brand) return null;
 
-  const { brand_1, brand_2, links } = header.data.attributes;
-  const menu: Item[] = parseLinks(links);
+  const { brand_name, brand_lead, navigation } = brand.data.attributes;
+  const menu: Item[] = parseLinks(navigation);
 
   return (
     <>
-      <div className={classes.section1}>
-        <div className={classes.logo}>
-          <HitachiLogo onClick={() => navigate("/")} />
-        </div>
+      <div className={classes.area1}>
+        <Container>
+          <div className={classes.logo}>
+            <HitachiLogo onClick={() => navigate("/")} />
+          </div>
+        </Container>
       </div>
-      <div className={classes.section2}>
-        <div className={classes.brand}>
-          <HvTypography variant="label">{brand_1}</HvTypography>
-          <HvTypography>&nbsp;|&nbsp;</HvTypography>
-          <HvTypography>{brand_2}</HvTypography>
-        </div>
-        <ul className={classes.menu}>
-          {menu.map((item) => (
-            <li key={item?.label}>
-              <HvTypography component="a" href={item?.href}>
-                {item?.label}
-              </HvTypography>
-            </li>
-          ))}
-        </ul>
+      <div className={classes.area2}>
+        <Container classes={{ root: classes.container }}>
+          <div className={classes.brand}>
+            <HvTypography variant="label">{brand_name}</HvTypography>
+            <HvTypography>&nbsp;|&nbsp;</HvTypography>
+            <HvTypography>{brand_lead}</HvTypography>
+          </div>
+          <ul className={classes.menu}>
+            {menu.map((item) => (
+              <li key={item?.label}>
+                <HvTypography component="a" href={item?.href}>
+                  {item?.label}
+                </HvTypography>
+              </li>
+            ))}
+          </ul>
+        </Container>
       </div>
     </>
   );

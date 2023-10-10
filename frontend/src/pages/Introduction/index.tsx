@@ -3,23 +3,21 @@ import {
   Section1,
   Section2,
   Section3,
-  Section4,
 } from "components/introduction";
 import { Footer } from "components/common";
 
-import { useIntro } from "lib/api/intro";
+import { useIntroduction } from "lib/api/introduction";
 
 const Resource = () => {
-  const { data: intro } = useIntro();
+  const { data: introduction } = useIntroduction();
 
   return (
-    intro && (
+    introduction && (
       <>
-        <BannerSection data={intro.data} />
-        <Section1 data={intro.data} />
-        <Section2 data={intro.data} />
-        <Section3 data={intro.data} />
-        <Section4 data={intro.data} />
+        <BannerSection data={introduction.data} />
+        <Section1 data={introduction.data} />
+        <Section2 data={introduction.data} />
+        <Section3 data={introduction.data} />
         <Footer />
       </>
     )

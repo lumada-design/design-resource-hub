@@ -1,5 +1,6 @@
-import { HvContainer, HvTypography } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@hitachivantara/uikit-react-core";
 
+import { Container } from "components/common";
 import { API_URL } from "lib/api/constants";
 import classes from "./styles";
 
@@ -8,7 +9,7 @@ export const ChampionsSection = ({ data }: Record<string, any>) => {
 
   return (
     <div className={classes.root}>
-      <HvContainer maxWidth="lg">
+      <Container>
         <div style={{ width: "100%" }}>
           <HvTypography variant="title3">
             Resource Champions & Organization
@@ -42,7 +43,7 @@ export const ChampionsSection = ({ data }: Record<string, any>) => {
             })}
           </div>
         </div>
-      </HvContainer>
+      </Container>
     </div>
   );
 };

@@ -1,0 +1,24 @@
+{
+  "kind": "singleType",
+  "collectionName": "brands",
+  "info": {
+    "singularName": "brand",
+    "pluralName": "brands",
+    "displayName": "Brand"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "brand_name": {
+      "type": "string"
+    },
+    "brand_lead": {
+      "type": "string"
+    },
+    "navigation": {
+      "type": "text"
+    }
+  }
+}

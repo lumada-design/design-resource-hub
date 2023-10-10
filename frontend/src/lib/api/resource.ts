@@ -8,14 +8,13 @@ export const useResources = (
   tagsFilter?: TagsFilter,
 ) => {
   const baseKey = "/resources?populate=deep";
-  const searchKey = `&filters[$or][0][name][$contains]=${searchFilter}&filters[$or][1][description][$contains]=${searchFilter}`;
+  const searchKey = `&filters[$or][0][title][$contains]=${searchFilter}&filters[$or][1][description][$contains]=${searchFilter}`;
   const tagsKey = tagsFilter
     ?.map((tag, idx) => `&filters[$or][${idx}][tags][id][$contains]=${tag}`)
     .join("");
 
   return useSWR(
-    `${baseKey}${searchFilter?.length ? searchKey : ""}${
-      tagsFilter?.length ? tagsKey : ""
+    `${baseKey}${searchFilter?.length ? searchKey : ""}${tagsFilter?.length ? tagsKey : ""
     }`,
     fetcher,
   );
@@ -24,5 +23,6 @@ export const useResources = (
 export const useResource = () => {
   const { name } = useParams();
 
-  return useSWR(`/resources?filters[name][$eq]=${name}&populate=deep`, fetcher);
+
+  return useSWR(`/resources?filters[title][$eq]=${name}&populate=deep`, fetcher);
 };

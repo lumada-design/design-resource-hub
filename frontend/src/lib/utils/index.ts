@@ -1,1 +1,1 @@
-export const formatText = (str: string) => str.replace(/\\n/g, "\n");
+export const formatText = (str?: string) => str?.replace(/\\n/g, "\n");
