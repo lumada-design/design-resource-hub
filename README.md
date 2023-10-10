@@ -6,6 +6,8 @@ Explore the Design Resources Library using the categorization available to find 
 
 ## Getting Started
 
+Make sure you have [Node.js](https://nodejs.org/en/download) installed.
+
 1. Clone the repository locally:
 
 ```bash
