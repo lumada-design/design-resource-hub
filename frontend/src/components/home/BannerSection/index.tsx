@@ -6,7 +6,7 @@ import {
 
 import { Container } from "components/common";
 import { useHome } from "lib/api/home";
-import { formatText } from "lib/utils";
+import { formatText, formatUrl } from "lib/utils";
 import classes from "./styles";
 
 export const BannerSection = () => {
@@ -21,7 +21,7 @@ export const BannerSection = () => {
   return (
     <div
       style={{
-        background: `url(${imageUrl}) no-repeat`,
+        background: `url(${formatUrl(imageUrl)}) no-repeat`,
         backgroundSize: "cover",
       }}
     >

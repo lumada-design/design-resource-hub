@@ -8,7 +8,7 @@ import {
 import { Backwards } from "@hitachivantara/uikit-react-icons";
 
 import { Container } from "components/common";
-import { formatText } from "lib/utils";
+import { formatText, formatUrl } from "lib/utils";
 import classes from "./styles";
 
 export const BannerSection = ({ data }: Record<string, any>) => {
@@ -26,7 +26,7 @@ export const BannerSection = ({ data }: Record<string, any>) => {
     <div
       className={classes.root}
       style={{
-        background: `url(${imageUrl}) no-repeat`,
+        background: `url(${formatUrl(imageUrl)}) no-repeat`,
         backgroundSize: "cover",
       }}
     >

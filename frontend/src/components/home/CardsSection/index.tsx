@@ -11,15 +11,16 @@ import { useNavigate } from "react-router-dom";
 
 import { useFiltersStore } from "lib/store/filters";
 import { useResources } from "lib/api/resource";
+import { formatUrl } from "lib/utils";
 import classes from "./styles";
 
 export const CardsSection = () => {
   const navigate = useNavigate();
   const { searchFilter, tagsFilter } = useFiltersStore();
-  const { data: resources, isLoading } = useResources(searchFilter, tagsFilter);
+  const { data: resources } = useResources(searchFilter, tagsFilter);
 
   return (
-    !isLoading && <HvGrid container>
+    resources && <HvGrid container>
       {resources.data.map((resource) => {
         const { title, description, card_image, tags, organization } = resource.attributes;
         const organizationName = organization.data?.attributes.name;
@@ -40,7 +41,7 @@ export const CardsSection = () => {
                 alt="Compressor"
                 component="img"
                 height={140}
-                image={`${imageUrl}`}
+                image={formatUrl(imageUrl)}
               />
               <HvCardHeader aria-label={title} title={title} />
               <HvCardContent>

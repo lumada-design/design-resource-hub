@@ -4,6 +4,7 @@ import {
 } from "@hitachivantara/uikit-react-core";
 
 import { Container } from "components/common";
+import { formatUrl } from "lib/utils";
 import classes from "./styles";
 
 export const TemplatesSection = ({ data }: Record<string, any>) => {
@@ -23,7 +24,7 @@ export const TemplatesSection = ({ data }: Record<string, any>) => {
               return (
                 <div key={template.id} className={classes.container}>
                   <img
-                    src={`${iconUrl}`}
+                    src={formatUrl(iconUrl)}
                     alt="icon"
                     className={classes.icon}
                   />
