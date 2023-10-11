@@ -6,21 +6,39 @@ import {
   HvCardMedia,
   HvTypography,
   HvTag,
+  HvEmptyState
 } from "@hitachivantara/uikit-react-core";
+import { Info } from "@hitachivantara/uikit-react-icons";
 import { useNavigate } from "react-router-dom";
 
-import { useFiltersStore } from "lib/store/filters";
+import { Loading } from "components/common"
 import { useResources } from "lib/api/resource";
+import { useFiltersStore } from "lib/store/filters";
 import { formatUrl } from "lib/utils";
 import classes from "./styles";
 
 export const CardsSection = () => {
   const navigate = useNavigate();
   const { searchFilter, tagsFilter } = useFiltersStore();
-  const { data: resources } = useResources(searchFilter, tagsFilter);
+  const { data: resources, isLoading } = useResources(searchFilter, tagsFilter);
+
+  if (isLoading) {
+    return <div className={classes.loading} ><Loading /></div>;
+  }
+
+  if (!resources.data.length) {
+    return (
+      <HvEmptyState
+        title="No resources found"
+        message="Try changing your filters or searching for something else"
+        icon={<Info />}
+        classes={{ root: classes.empty }}
+      />
+    )
+  }
 
   return (
-    resources && <HvGrid container>
+    <HvGrid container>
       {resources.data.map((resource) => {
         const { title, description, card_image, tags, organization } = resource.attributes;
         const organizationName = organization.data?.attributes.name;
@@ -32,7 +50,7 @@ export const CardsSection = () => {
             <HvCard
               bgcolor="atmo1"
               statusColor="negative"
-              className={classes.root}
+              className={classes.card}
               classes={{ semanticBar: classes.hide }}
               selectable
               onClick={() => navigate(resourceUrl)}

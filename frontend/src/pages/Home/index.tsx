@@ -7,15 +7,18 @@ import {
   CardsSection,
   FilterSection,
 } from "components/home";
-import { Container, Footer } from "components/common";
+import { Container } from "components/common";
+import { useHome } from "lib/api/home";
 import { useFiltersStore } from "lib/store/filters";
 import classes from "./styles";
 
 const Resources = () => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
-
   const { searchFilter, setSearchFilter } = useFiltersStore();
+  const { data: home } = useHome();
+
+  if (!home) return null;
 
   const handleSearch = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -25,7 +28,7 @@ const Resources = () => {
 
   return (
     <>
-      <BannerSection />
+      <BannerSection data={home.data} />
       <Container classes={{ root: classes.container }}>
         <HvGrid container>
           {isMdUp && (
@@ -51,7 +54,6 @@ const Resources = () => {
           </HvGrid>
         </HvGrid>
       </Container>
-      <Footer />
     </>
   )
 };

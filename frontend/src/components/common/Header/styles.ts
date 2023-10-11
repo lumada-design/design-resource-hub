@@ -2,6 +2,9 @@ import { css } from "@emotion/css";
 import { theme } from "@hitachivantara/uikit-styles";
 
 const styles = {
+  preload: css({
+    height: 115,
+  }),
   container: css({
     display: "flex",
   }),

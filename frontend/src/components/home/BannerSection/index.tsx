@@ -5,21 +5,18 @@ import {
 } from "@hitachivantara/uikit-react-core";
 
 import { Container } from "components/common";
-import { useHome } from "lib/api/home";
 import { formatText, formatUrl } from "lib/utils";
 import classes from "./styles";
 
-export const BannerSection = () => {
+export const BannerSection = ({ data }) => {
   const navigate = useNavigate();
-  const { data: home, isLoading } = useHome();
 
-  if (isLoading) return null;
-
-  const { banner_title, banner_description, banner_button_label, banner_background_image } = home.data.attributes;
+  const { banner_title, banner_description, banner_button_label, banner_background_image } = data.attributes;
   const imageUrl = banner_background_image.data.attributes.url;
 
   return (
     <div
+      className={classes.root}
       style={{
         background: `url(${formatUrl(imageUrl)}) no-repeat`,
         backgroundSize: "cover",

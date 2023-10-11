@@ -26,7 +26,7 @@ export const Header = () => {
   const navigate = useNavigate();
   const { data: brand } = useBrand();
 
-  if (!brand) return null;
+  if (!brand) return <div className={classes.preload} />;
 
   const { brand_name, brand_lead, navigation } = brand.data.attributes;
   const menu: Item[] = parseLinks(navigation);
