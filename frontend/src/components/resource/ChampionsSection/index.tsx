@@ -1,7 +1,6 @@
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-import { Container } from "components/common";
-import { API_URL } from "lib/api/constants";
+import { Container } from "components/common";
 import classes from "./styles";
 
 export const ChampionsSection = ({ data }: Record<string, any>) => {
@@ -23,7 +22,7 @@ export const ChampionsSection = ({ data }: Record<string, any>) => {
               return (
                 <div key={champion.id} className={classes.container}>
                   <img
-                    src={`${API_URL}${avatarUrl}`}
+                    src={`${avatarUrl}`}
                     alt="icon"
                     className={classes.picture}
                   />

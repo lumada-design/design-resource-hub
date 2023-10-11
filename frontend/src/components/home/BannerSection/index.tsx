@@ -5,7 +5,6 @@ import {
 } from "@hitachivantara/uikit-react-core";
 
 import { Container } from "components/common";
-import { API_URL } from "lib/api/constants";
 import { useHome } from "lib/api/home";
 import { formatText } from "lib/utils";
 import classes from "./styles";
@@ -22,7 +21,7 @@ export const BannerSection = () => {
   return (
     <div
       style={{
-        background: `url(${API_URL}${imageUrl}) no-repeat`,
+        background: `url(${imageUrl}) no-repeat`,
         backgroundSize: "cover",
       }}
     >

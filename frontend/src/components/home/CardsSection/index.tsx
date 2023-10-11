@@ -9,7 +9,6 @@ import {
 } from "@hitachivantara/uikit-react-core";
 import { useNavigate } from "react-router-dom";
 
-import { API_URL } from "lib/api/constants";
 import { useFiltersStore } from "lib/store/filters";
 import { useResources } from "lib/api/resource";
 import classes from "./styles";
@@ -23,7 +22,6 @@ export const CardsSection = () => {
     !isLoading && <HvGrid container>
       {resources.data.map((resource) => {
         const { title, description, card_image, tags, organization } = resource.attributes;
-        console.log('organization: ', organization);
         const organizationName = organization.data?.attributes.name;
         const imageUrl = card_image.data?.attributes.url;
         const resourceUrl = `/resource/${title}`;
@@ -42,7 +40,7 @@ export const CardsSection = () => {
                 alt="Compressor"
                 component="img"
                 height={140}
-                image={`${API_URL}${imageUrl}`}
+                image={`${imageUrl}`}
               />
               <HvCardHeader aria-label={title} title={title} />
               <HvCardContent>

@@ -3,7 +3,6 @@ import {
   HvButton,
 } from "@hitachivantara/uikit-react-core";
 
-import { API_URL } from "lib/api/constants";
 import { Container } from "components/common";
 import classes from "./styles";
 
@@ -24,7 +23,7 @@ export const TemplatesSection = ({ data }: Record<string, any>) => {
               return (
                 <div key={template.id} className={classes.container}>
                   <img
-                    src={`${API_URL}${iconUrl}`}
+                    src={`${iconUrl}`}
                     alt="icon"
                     className={classes.icon}
                   />
