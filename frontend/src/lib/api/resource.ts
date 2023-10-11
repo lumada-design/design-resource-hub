@@ -7,15 +7,14 @@ export const useResources = (
   searchFilter?: string,
   tagsFilter?: TagsFilter,
 ) => {
-  const baseKey = "/resources?populate=deep";
-  const searchKey = `&filters[$or][0][title][$contains]=${searchFilter}&filters[$or][1][description][$contains]=${searchFilter}`;
+  const searchKey = `&filters[$or][0][title][$containsi]=${searchFilter}&filters[$or][1][description][$containsi]=${searchFilter}`;
   const tagsKey = tagsFilter
-    ?.map((tag, idx) => `&filters[$or][${idx}][tags][id][$contains]=${tag}`)
+    ?.map((tag) => `&filters[tags][id][$eq]=${tag}`)
     .join("");
 
   return useSWR(
-    `${baseKey}${searchFilter?.length ? searchKey : ""}${tagsFilter?.length ? tagsKey : ""
-    }`,
+    `/resources?${searchFilter?.length ? searchKey : ""}${tagsFilter?.length ? tagsKey : ""
+    }&populate=deep`,
     fetcher,
   );
 };

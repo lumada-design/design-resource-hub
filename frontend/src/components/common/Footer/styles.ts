@@ -16,6 +16,9 @@ const styles = {
     "& > *": {
       display: "inline",
     },
+    "@media screen and (max-width: 900px)": {
+      marginTop: theme.space.lg,
+    },
   }),
   menu: css({
     marginLeft: "auto",
@@ -31,6 +34,9 @@ const styles = {
       "& *": {
         color: "#000",
       },
+    },
+    "@media screen and (max-width: 900px)": {
+      display: "none",
     },
   }),
 };

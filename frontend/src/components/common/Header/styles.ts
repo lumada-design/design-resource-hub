@@ -15,6 +15,7 @@ const styles = {
     cursor: "pointer",
   }),
   area2: css({
+    display: "flex",
     alignItems: "center",
     height: 65,
     background: "#e5e5e5",
@@ -41,6 +42,9 @@ const styles = {
       "& *": {
         color: theme.colors.base_light,
       },
+    },
+    "@media screen and (max-width: 900px)": {
+      display: "none",
     },
   }),
 };
