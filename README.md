@@ -1,8 +1,8 @@
-# Hitachi Vantara Resources Library
+# Depo. | Design Resource Hub
 
 ### Unlock Your Creativity and Accelerate Your Work
 
-Explore the Design Resources Library using the categorization available to find the right resource for your use case.
+Explore a collection of activities, methods, tools and processes from Hitachi's design community to help you meet your design goals.
 
 ## Getting Started
 
