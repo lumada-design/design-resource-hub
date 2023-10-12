@@ -22,7 +22,7 @@ export default defineConfig({
     reporters: "default",
     coverage: {
       enabled: false, // disabled by default. run vitest with --coverage
-      provider: "c8",
+      provider: "v8",
       reporter: "lcov",
       include: ["src/**/*.ts?(x)"],
       exclude: [
