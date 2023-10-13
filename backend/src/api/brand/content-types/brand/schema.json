@@ -4,7 +4,8 @@
   "info": {
     "singularName": "brand",
     "pluralName": "brands",
-    "displayName": "Brand"
+    "displayName": "Brand",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -17,7 +18,13 @@
     "brand_lead": {
       "type": "string"
     },
-    "navigation": {
+    "main_menu": {
+      "type": "text"
+    },
+    "copyright": {
+      "type": "string"
+    },
+    "secondary_menu": {
       "type": "text"
     }
   }

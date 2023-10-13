@@ -13,7 +13,6 @@ const styles = {
   }),
   container: css({
     "@media screen and (min-width: 900px)": {
-      display: "flex",
       gap: theme.space.lg,
     },
   }),

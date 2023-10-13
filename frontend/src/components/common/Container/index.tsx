@@ -1,22 +1,25 @@
-import { HvContainer, HvContainerProps, theme } from "@hitachivantara/uikit-react-core";
+import clsx from "clsx";
+import { HvContainer, HvContainerProps } from "@hitachivantara/uikit-react-core";
+
+import classes from "./styles";
 
 interface ContainerProps extends HvContainerProps {
   useLoading?: boolean;
+  styles?: React.CSSProperties;
 }
 
 export const Container = ({
   maxWidth = "lg",
   className,
   children,
-  classes,
-}: ContainerProps) => (
-  <HvContainer
-    maxWidth={maxWidth}
-    className={className}
-    classes={{ ...classes }}
-    disableGutters
-    style={{ padding: theme.space.md }}
-  >
+  classes: classesProp,
+  styles: stylesProp
+}: ContainerProps) => <HvContainer
+  maxWidth={maxWidth}
+  className={clsx(classes.container, className)}
+  disableGutters
+  style={{ ...stylesProp }}
+  classes={{ ...classesProp }}
+>
     {children}
-  </HvContainer >
-);
+  </HvContainer >;

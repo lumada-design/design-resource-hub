@@ -6,7 +6,6 @@ const styles = {
     background: theme.colors.base_light,
   }),
   container: css({
-    display: "flex",
     alignItems: "center",
     maxWidth: "700px",
     minHeight: 400,

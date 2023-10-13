@@ -5,9 +5,6 @@ const styles = {
   preload: css({
     height: 115,
   }),
-  container: css({
-    display: "flex",
-  }),
   area1: css({
     display: "flex",
     alignItems: "center",
@@ -46,9 +43,9 @@ const styles = {
         color: theme.colors.base_light,
       },
     },
-    "@media screen and (max-width: 900px)": {
-      display: "none",
-    },
+  }),
+  smallScreen: css({
+    display: "none",
   }),
 };
 

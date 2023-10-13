@@ -6,7 +6,9 @@ const styles = {
     minHeight: 300,
   }),
   container: css({
-    padding: `${theme.space.lg} 0`,
+    display: "block",
+    padding: `${theme.space.lg} ${theme.space.md}`,
+
   }),
   textContainer: css({
     maxWidth: "750px",

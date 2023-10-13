@@ -8,7 +8,7 @@ import {
   FilterSection,
 } from "components/home";
 import { Container } from "components/common";
-import { useHome } from "lib/api/home";
+import { useHomeBanner } from "lib/api/homeBanner";
 import { useFiltersStore } from "lib/store/filters";
 import classes from "./styles";
 
@@ -16,9 +16,9 @@ const Resources = () => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const { searchFilter, setSearchFilter } = useFiltersStore();
-  const { data: home } = useHome();
+  const { data: homeBanner } = useHomeBanner();
 
-  if (!home) return null;
+  if (!homeBanner) return null;
 
   const handleSearch = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -28,7 +28,7 @@ const Resources = () => {
 
   return (
     <>
-      <BannerSection data={home.data} />
+      <BannerSection data={homeBanner.data} />
       <Container classes={{ root: classes.container }}>
         <HvGrid container>
           {isMdUp && (

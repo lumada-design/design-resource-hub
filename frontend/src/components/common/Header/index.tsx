@@ -1,4 +1,6 @@
+import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery, useTheme } from "@mui/material";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import HitachiLogo from "assets/HitachiLogo";
@@ -24,12 +26,14 @@ const parseLinks = (links: string) => {
 
 export const Header = () => {
   const navigate = useNavigate();
+  const theme = useTheme();
+  const isMdDown = useMediaQuery(theme.breakpoints.down("md"));
   const { data: brand } = useBrand();
 
   if (!brand) return <div className={classes.preload} />;
 
-  const { brand_name, brand_lead, navigation } = brand.data.attributes;
-  const menu: Item[] = parseLinks(navigation);
+  const { brand_name, brand_lead, main_menu } = brand.data.attributes;
+  const menu: Item[] = parseLinks(main_menu);
 
   return (
     <>
@@ -41,16 +45,16 @@ export const Header = () => {
         </Container>
       </div>
       <div className={classes.area2}>
-        <Container classes={{ root: classes.container }}>
+        <Container>
           <div className={classes.brand}>
             <HvTypography variant="label">{brand_name}</HvTypography>
             <HvTypography>&nbsp;|&nbsp;</HvTypography>
             <HvTypography>{brand_lead}</HvTypography>
           </div>
-          <ul className={classes.menu}>
+          <ul className={clsx(classes.menu, { [classes.smallScreen]: isMdDown })}>
             {menu.map((item) => (
               <li key={item?.label}>
-                <HvTypography component="a" href={item?.href}>
+                <HvTypography variant="label" component="a" href={item?.href}>
                   {item?.label}
                 </HvTypography>
               </li>

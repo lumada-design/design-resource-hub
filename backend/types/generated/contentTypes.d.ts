@@ -683,6 +683,7 @@ export interface ApiBrandBrand extends Schema.SingleType {
     singularName: 'brand';
     pluralName: 'brands';
     displayName: 'Brand';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -690,7 +691,9 @@ export interface ApiBrandBrand extends Schema.SingleType {
   attributes: {
     brand_name: Attribute.String;
     brand_lead: Attribute.String;
-    navigation: Attribute.Text;
+    main_menu: Attribute.Text;
+    copyright: Attribute.String;
+    secondary_menu: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -744,12 +747,12 @@ export interface ApiChampionChampion extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomePageHomePage extends Schema.SingleType {
-  collectionName: 'home_pages';
+export interface ApiHomeBannerHomeBanner extends Schema.SingleType {
+  collectionName: 'home_banners';
   info: {
-    singularName: 'home-page';
-    pluralName: 'home-pages';
-    displayName: 'Home Page';
+    singularName: 'home-banner';
+    pluralName: 'home-banners';
+    displayName: 'Home Banner';
   };
   options: {
     draftAndPublish: true;
@@ -764,13 +767,13 @@ export interface ApiHomePageHomePage extends Schema.SingleType {
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::home-page.home-page',
+      'api::home-banner.home-banner',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::home-page.home-page',
+      'api::home-banner.home-banner',
       'oneToOne',
       'admin::user'
     > &
@@ -1018,7 +1021,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::brand.brand': ApiBrandBrand;
       'api::champion.champion': ApiChampionChampion;
-      'api::home-page.home-page': ApiHomePageHomePage;
+      'api::home-banner.home-banner': ApiHomeBannerHomeBanner;
       'api::introduction-page.introduction-page': ApiIntroductionPageIntroductionPage;
       'api::organization.organization': ApiOrganizationOrganization;
       'api::resource.resource': ApiResourceResource;

@@ -5,10 +5,9 @@ const styles = {
   container: css({
     display: "flex",
   }),
-  root: css({
-    alignItems: "center",
-    height: 150,
+  area1: css({
     background: "#e5e5e5",
+    paddingTop: theme.space.md,
   }),
   brand: css({
     display: "flex",
@@ -16,16 +15,13 @@ const styles = {
     "& > *": {
       display: "inline",
     },
-    "@media screen and (max-width: 900px)": {
-      marginTop: theme.space.lg,
-    },
+    minHeight: 50,
   }),
   menu: css({
     marginLeft: "auto",
     "& li": {
       display: "flex",
       float: "left",
-      height: 65,
       alignItems: "center",
       padding: theme.space.sm,
     },
@@ -35,9 +31,13 @@ const styles = {
         color: "#000",
       },
     },
-    "@media screen and (max-width: 900px)": {
-      display: "none",
-    },
+  }),
+  area2: css({
+    background: "#e5e5e5",
+    paddingBottom: theme.space.md,
+  }),
+  smallScreen: css({
+    display: "none",
   }),
 };
 

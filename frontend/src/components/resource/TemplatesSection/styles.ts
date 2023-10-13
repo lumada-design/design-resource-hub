@@ -25,7 +25,6 @@ const styles = {
     },
   }),
   container: css({
-    display: "flex",
     alignItems: "center",
     gap: theme.space.sm,
   }),

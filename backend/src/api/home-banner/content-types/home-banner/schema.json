@@ -1,10 +1,10 @@
 {
   "kind": "singleType",
-  "collectionName": "home_pages",
+  "collectionName": "home_banners",
   "info": {
-    "singularName": "home-page",
-    "pluralName": "home-pages",
-    "displayName": "Home Page"
+    "singularName": "home-banner",
+    "pluralName": "home-banners",
+    "displayName": "Home Banner"
   },
   "options": {
     "draftAndPublish": true
