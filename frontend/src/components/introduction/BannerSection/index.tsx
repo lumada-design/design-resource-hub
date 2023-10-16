@@ -1,10 +1,7 @@
 import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery, useTheme } from "@mui/material";
-import {
-  HvTypography,
-  HvButton,
-} from "@hitachivantara/uikit-react-core";
+import { HvTypography, HvButton } from "@hitachivantara/uikit-react-core";
 import { Backwards } from "@hitachivantara/uikit-react-icons";
 
 import { Container } from "components/common";
@@ -16,10 +13,7 @@ export const BannerSection = ({ data }: Record<string, any>) => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
-  const {
-    banner_title,
-    banner_image,
-  } = data.attributes;
+  const { banner_title, banner_image } = data.attributes;
   const imageUrl = banner_image.data.attributes.url;
 
   return (
@@ -40,7 +34,9 @@ export const BannerSection = ({ data }: Record<string, any>) => {
         >
           Back
         </HvButton>
-        <HvTypography className={classes.title} variant="title1">{formatText(banner_title)}</HvTypography>
+        <HvTypography className={classes.title} variant="title1">
+          {formatText(banner_title)}
+        </HvTypography>
       </Container>
     </div>
   );

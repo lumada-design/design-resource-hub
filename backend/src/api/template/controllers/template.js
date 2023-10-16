@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 /**
  * template controller
  */
 
-const { createCoreController } = require('@strapi/strapi').factories;
+const { createCoreController } = require("@strapi/strapi").factories;
 
-module.exports = createCoreController('api::template.template');
+module.exports = createCoreController("api::template.template");

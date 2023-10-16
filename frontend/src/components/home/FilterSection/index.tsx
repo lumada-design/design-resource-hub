@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import merge from "deepmerge";
 import {
   HvTypography,
   HvCheckBox,
@@ -5,59 +7,36 @@ import {
 } from "@hitachivantara/uikit-react-core";
 
 import { useFiltersStore } from "lib/store/filters";
-import { useResources } from "lib/api/resource";
-import { useTags } from "lib/api/tag";
+import {
+  useResources,
+  useResourceCategories,
+  useResourceTags,
+} from "lib/api/resource";
 import classes from "./styles";
-
-interface Tags {
-  data: Record<string, unknown>[];
-  meta: Record<string, unknown>;
-}
-
-interface Tag {
-  id: string;
-  name: string;
-}
-
-const groupTags = (tags: Tags) => {
-  return tags?.data.reduce((acc: any, tag: any) => {
-    const { name: tagName } = tag.attributes;
-    const { name: tagCategory } = tag.attributes.tag_category.data.attributes;
-
-    if (!acc[tagCategory]) {
-      acc[tagCategory] = [];
-    }
-    acc[tagCategory].push({ id: tag.id, name: tagName });
-    return acc;
-  }, {});
-};
+import { getResourceTypes, groupResourceTags, setTagsCounter } from "./utils";
 
 export const FilterSection = () => {
-  const { data: resources, isLoading: isLoadingRes } = useResources();
-  const { data: tags, isLoading: isLoadingTags } = useTags();
-  const { tagsFilter, setTagsFilter } = useFiltersStore();
+  const {
+    resourceTypes,
+    setResourceTypes,
+    resourceFilters,
+    setResourceFilters,
+  } = useFiltersStore();
+  const { data: resources } = useResources();
+  const { data: resourceCategories } = useResourceCategories();
 
-  const isReady = !isLoadingRes && !isLoadingTags;
+  useEffect(() => {
+    const types = getResourceTypes(resources, resourceCategories);
+    setResourceTypes(types);
+  }, [resourceCategories]);
 
-  let groupedTags: Record<string, Tag[]> = {};
+  const { data: resourceTags } = useResourceTags(resourceTypes || []);
+  const groupedTags = groupResourceTags(merge.all(resourceTags || []));
 
-  if (isReady) {
-    groupedTags = groupTags(tags);
-
-    Object.keys(groupedTags).forEach((category: string) => {
-      groupedTags[category].forEach((tag: Tag) => {
-        const count = resources.data.filter((resource: any) => {
-          return resource.attributes.tags.data.find(
-            (t: Tag) => t.id === tag.id,
-          );
-        });
-        tag.name = `${tag.name} (${count.length})`;
-      });
-    });
-  }
+  setTagsCounter(resources, resourceTypes, groupedTags);
 
   const handleCheck = (value: string) => {
-    const opts: string[] = [...tagsFilter];
+    const opts: string[] = [...resourceFilters];
 
     if (opts.includes(value)) {
       opts.splice(opts.indexOf(value), 1);
@@ -65,29 +44,29 @@ export const FilterSection = () => {
       opts.push(value);
     }
 
-    setTagsFilter(opts);
+    setResourceFilters(opts);
   };
 
   return (
-    isReady && (
-      <HvStack direction="column" spacing="sm">
-        {Object.keys(groupedTags).map((category: string) => (
+    <HvStack direction="column" spacing="sm">
+      {groupedTags &&
+        Object.keys(groupedTags).map((category: string) => (
           <span key={category}>
             <HvTypography paragraph className={classes.label} variant="label">
               {category}
             </HvTypography>
-            {groupedTags[category].map((tag: Tag) => (
+            {groupedTags[category].map((tag) => (
               <HvCheckBox
                 key={tag.id}
                 classes={{ root: classes.root }}
-                label={tag.name}
-                onChange={() => handleCheck(tag.id)}
-                checked={tagsFilter.includes(tag.id)}
+                label={`${tag.name} (${tag.count})`}
+                onChange={() => handleCheck(tag.name)}
+                checked={resourceFilters.includes(tag.name)}
+                disabled={tag.disabled}
               />
             ))}
           </span>
         ))}
-      </HvStack>
-    )
+    </HvStack>
   );
 };

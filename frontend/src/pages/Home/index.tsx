@@ -2,13 +2,9 @@ import { ChangeEvent } from "react";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { HvGrid, HvInput } from "@hitachivantara/uikit-react-core";
 
-import {
-  BannerSection,
-  CardsSection,
-  FilterSection,
-} from "components/home";
+import { BannerSection, CardsSection, FilterSection } from "components/home";
 import { Container } from "components/common";
-import { useHomeBanner } from "lib/api/homeBanner";
+import { useHomePage } from "lib/api/homePage";
 import { useFiltersStore } from "lib/store/filters";
 import classes from "./styles";
 
@@ -16,9 +12,9 @@ const Resources = () => {
   const theme = useTheme();
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
   const { searchFilter, setSearchFilter } = useFiltersStore();
-  const { data: homeBanner } = useHomeBanner();
+  const { data: home } = useHomePage();
 
-  if (!homeBanner) return null;
+  if (!home) return null;
 
   const handleSearch = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
@@ -28,7 +24,7 @@ const Resources = () => {
 
   return (
     <>
-      <BannerSection data={homeBanner.data} />
+      <BannerSection data={home.data} />
       <Container classes={{ root: classes.container }}>
         <HvGrid container>
           {isMdUp && (
@@ -55,7 +51,7 @@ const Resources = () => {
         </HvGrid>
       </Container>
     </>
-  )
+  );
 };
 
 export default Resources;

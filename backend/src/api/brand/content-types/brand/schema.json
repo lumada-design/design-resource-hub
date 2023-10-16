@@ -15,7 +15,7 @@
     "brand_name": {
       "type": "string"
     },
-    "brand_lead": {
+    "brand_tagline": {
       "type": "string"
     },
     "main_menu": {

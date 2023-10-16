@@ -29,8 +29,8 @@ export const TextSection = ({
               className={classes.tag}
               key={tag.id}
               label={name}
-              color={color}
               type="categorical"
+              style={{ backgroundColor: color }}
             />
           );
         })}

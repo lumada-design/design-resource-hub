@@ -12,46 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "title": {
+    "name": {
       "type": "string"
     },
     "description": {
-      "type": "text"
-    },
-    "banner_image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
-    },
-    "what": {
-      "type": "text"
-    },
-    "why": {
-      "type": "text"
-    },
-    "when": {
       "type": "text"
     },
     "templates": {
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::template.template"
-    },
-    "tags": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::tag.tag"
-    },
-    "card_image": {
-      "type": "media",
-      "multiple": false,
-      "required": false,
-      "allowedTypes": [
-        "images"
-      ]
     },
     "champions": {
       "type": "relation",
@@ -62,6 +32,27 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::organization.organization"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "resource_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::resource-tag.resource-tag"
+    },
+    "resource_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resource-type.resource-type"
     }
   }
 }

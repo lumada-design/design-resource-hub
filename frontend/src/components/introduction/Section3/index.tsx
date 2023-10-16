@@ -7,10 +7,7 @@ export const Section3 = ({ data }: Record<string, any>) => {
   return (
     <div className={classes.root}>
       <Container classes={{ root: classes.container }}>
-        <TextSection
-          style={{ width: 650 }}
-          title={section3_title}
-        />
+        <TextSection style={{ width: 650 }} title={section3_title} />
       </Container>
     </div>
   );

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "resource_tags",
+  "info": {
+    "singularName": "resource-tag",
+    "pluralName": "resource-tags",
+    "displayName": "Resource - Tags",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string"
+    },
+    "color": {
+      "type": "string"
+    },
+    "resource_category": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::resource-category.resource-category"
+    }
+  }
+}

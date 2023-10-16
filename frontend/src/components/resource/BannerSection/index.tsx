@@ -10,18 +10,24 @@ import { Container } from "components/common";
 import classes from "./styles";
 import { formatText, formatUrl } from "lib/utils";
 
-export const BannerSection = ({ data }: Record<string, any>) => {
+export const BannerSection = ({ resourceData, bannerData }) => {
   const navigate = useNavigate();
 
-  const { title, description, banner_image, tags } = data[0].attributes;
-  const imageUrl = banner_image.data.attributes.url;
+  const { title, description, tags } = resourceData.attributes;
+  const { image } = bannerData.attributes;
+  const imageUrl = image.data.attributes.url;
+
+  const color =
+    tags.data.filter((tag) => !!tag.attributes.color)[0]?.attributes.color ||
+    "rgba(218, 230, 240, .5)";
 
   return (
     <div
       className={classes.root}
       style={{
-        background: `url(${formatUrl(imageUrl)}) no-repeat`,
-        backgroundSize: "cover",
+        background: `-webkit-linear-gradient(${color}, ${color}), url(${formatUrl(
+          imageUrl,
+        )}) no-repeat center center / cover`,
       }}
     >
       <Container>
@@ -44,8 +50,8 @@ export const BannerSection = ({ data }: Record<string, any>) => {
                   className={classes.tag}
                   key={tag.id}
                   label={name}
-                  color={color}
                   type="categorical"
+                  style={{ backgroundColor: color }}
                 />
               );
             })}

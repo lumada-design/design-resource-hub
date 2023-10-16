@@ -25,9 +25,7 @@
       "type": "email"
     },
     "avatar": {
-      "allowedTypes": [
-        "images"
-      ],
+      "allowedTypes": ["images"],
       "type": "media",
       "multiple": false
     }

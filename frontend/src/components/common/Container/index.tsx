@@ -1,5 +1,8 @@
 import clsx from "clsx";
-import { HvContainer, HvContainerProps } from "@hitachivantara/uikit-react-core";
+import {
+  HvContainer,
+  HvContainerProps,
+} from "@hitachivantara/uikit-react-core";
 
 import classes from "./styles";
 
@@ -13,13 +16,15 @@ export const Container = ({
   className,
   children,
   classes: classesProp,
-  styles: stylesProp
-}: ContainerProps) => <HvContainer
-  maxWidth={maxWidth}
-  className={clsx(classes.container, className)}
-  disableGutters
-  style={{ ...stylesProp }}
-  classes={{ ...classesProp }}
->
+  styles: stylesProp,
+}: ContainerProps) => (
+  <HvContainer
+    maxWidth={maxWidth}
+    className={clsx(classes.container, className)}
+    disableGutters
+    style={{ ...stylesProp }}
+    classes={{ ...classesProp }}
+  >
     {children}
-  </HvContainer >;
+  </HvContainer>
+);

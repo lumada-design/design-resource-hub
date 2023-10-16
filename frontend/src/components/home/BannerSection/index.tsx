@@ -1,18 +1,13 @@
-import { useNavigate } from "react-router-dom";
-import {
-  HvTypography,
-  HvButton,
-} from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-import { Container } from "components/common";
+import { Container, LinkButton } from "components/common";
 import { formatText, formatUrl } from "lib/utils";
 import classes from "./styles";
 
 export const BannerSection = ({ data }) => {
-  const navigate = useNavigate();
-
-  const { banner_title, banner_description, banner_button_label, banner_background_image } = data.attributes;
-  const imageUrl = banner_background_image.data.attributes.url;
+  const { title, description, button_label, button_target, image } =
+    data.attributes;
+  const imageUrl = image.data.attributes.url;
 
   return (
     <div
@@ -29,19 +24,13 @@ export const BannerSection = ({ data }) => {
             className={classes.text}
             variant="title1"
           >
-            {formatText(banner_title)}
+            {formatText(title)}
           </HvTypography>
           <HvTypography className={classes.text}>
-            {formatText(banner_description)}
+            {formatText(description)}
           </HvTypography>
         </div>
-        <HvButton
-          style={{ marginTop: 20 }}
-          variant="primary"
-          onClick={() => navigate("/intro")}
-        >
-          {banner_button_label}
-        </HvButton>
+        <LinkButton label={button_label} target={button_target} />
       </Container>
     </div>
   );

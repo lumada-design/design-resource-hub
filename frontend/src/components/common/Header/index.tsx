@@ -32,7 +32,7 @@ export const Header = () => {
 
   if (!brand) return <div className={classes.preload} />;
 
-  const { brand_name, brand_lead, main_menu } = brand.data.attributes;
+  const { brand_name, brand_tagline, main_menu } = brand.data.attributes;
   const menu: Item[] = parseLinks(main_menu);
 
   return (
@@ -49,9 +49,11 @@ export const Header = () => {
           <div className={classes.brand}>
             <HvTypography variant="label">{brand_name}</HvTypography>
             <HvTypography>&nbsp;|&nbsp;</HvTypography>
-            <HvTypography>{brand_lead}</HvTypography>
+            <HvTypography>{brand_tagline}</HvTypography>
           </div>
-          <ul className={clsx(classes.menu, { [classes.smallScreen]: isMdDown })}>
+          <ul
+            className={clsx(classes.menu, { [classes.smallScreen]: isMdDown })}
+          >
             {menu.map((item) => (
               <li key={item?.label}>
                 <HvTypography variant="label" component="a" href={item?.href}>

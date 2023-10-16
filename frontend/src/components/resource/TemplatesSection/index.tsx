@@ -1,7 +1,4 @@
-import {
-  HvTypography,
-  HvButton,
-} from "@hitachivantara/uikit-react-core";
+import { HvTypography, HvButton } from "@hitachivantara/uikit-react-core";
 
 import { Container } from "components/common";
 import { formatUrl } from "lib/utils";

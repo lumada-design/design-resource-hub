@@ -1,12 +1,15 @@
 type Filter = string;
-type TagsFilter = string[];
+type ResourceTypes = *;
+type ResourceFilters = string[];
 
 interface FiltersState {
   searchFilter: Filter;
-  tagsFilter: TagsFilter;
+  resourceTypes: ResourceTypes;
+  resourceFilters: ResourceFilters;
 }
 
 interface FiltersStore extends FiltersState {
   setSearchFilter: (searchFilter: Filter) => void;
-  setTagsFilter: (tagsFilter: TagsFilter) => void;
+  setResourceTypes: (resourceTypes: ResourcesTypes) => void;
+  setResourceFilters: (resourceFilters: ResourceFilters) => void;
 }

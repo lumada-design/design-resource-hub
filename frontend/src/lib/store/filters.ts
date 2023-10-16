@@ -3,7 +3,8 @@ import { immer } from "zustand/middleware/immer";
 
 const initialState: FiltersState = {
   searchFilter: "",
-  tagsFilter: [],
+  resourceTypes: [],
+  resourceFilters: [],
 };
 
 export const useFiltersStore = create(
@@ -13,9 +14,13 @@ export const useFiltersStore = create(
       set((state) => {
         state.searchFilter = searchFilter;
       }),
-    setTagsFilter: (tagsFilter) =>
+    setResourceTypes: (resourceTypes) =>
       set((state) => {
-        state.tagsFilter = tagsFilter;
+        state.resourceTypes = resourceTypes;
+      }),
+    setResourceFilters: (resourceFilters) =>
+      set((state) => {
+        state.resourceFilters = resourceFilters;
       }),
   })),
 );

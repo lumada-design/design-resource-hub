@@ -690,7 +690,7 @@ export interface ApiBrandBrand extends Schema.SingleType {
   };
   attributes: {
     brand_name: Attribute.String;
-    brand_lead: Attribute.String;
+    brand_tagline: Attribute.String;
     main_menu: Attribute.Text;
     copyright: Attribute.String;
     secondary_menu: Attribute.Text;
@@ -747,33 +747,34 @@ export interface ApiChampionChampion extends Schema.CollectionType {
   };
 }
 
-export interface ApiHomeBannerHomeBanner extends Schema.SingleType {
-  collectionName: 'home_banners';
+export interface ApiHomePageHomePage extends Schema.SingleType {
+  collectionName: 'home_pages';
   info: {
-    singularName: 'home-banner';
-    pluralName: 'home-banners';
-    displayName: 'Home Banner';
+    singularName: 'home-page';
+    pluralName: 'home-pages';
+    displayName: 'Home Page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    banner_title: Attribute.String;
-    banner_description: Attribute.Text;
-    banner_button_label: Attribute.String;
-    banner_button_target: Attribute.String;
-    banner_background_image: Attribute.Media;
+    title: Attribute.String;
+    description: Attribute.Text;
+    image: Attribute.Media;
+    button_label: Attribute.String;
+    button_target: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::home-banner.home-banner',
+      'api::home-page.home-page',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::home-banner.home-banner',
+      'api::home-page.home-page',
       'oneToOne',
       'admin::user'
     > &
@@ -793,19 +794,8 @@ export interface ApiIntroductionPageIntroductionPage extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    banner_title: Attribute.Text;
-    banner_image: Attribute.Media;
-    section1_title: Attribute.String;
-    section1_description: Attribute.Text;
-    section2_title: Attribute.String;
-    section2_description: Attribute.Text;
-    section3_title: Attribute.String;
-    section3_content1: Attribute.Text;
-    section3_content1_button_label: Attribute.String;
-    section3_content1_button_target: Attribute.String;
-    section3_content2: Attribute.Text;
-    section3_content2_button_label: Attribute.String;
-    section3_content2_button_target: Attribute.String;
+    title: Attribute.String;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -867,23 +857,13 @@ export interface ApiResourceResource extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    name: Attribute.String;
     description: Attribute.Text;
-    banner_image: Attribute.Media;
-    what: Attribute.Text;
-    why: Attribute.Text;
-    when: Attribute.Text;
     templates: Attribute.Relation<
       'api::resource.resource',
       'oneToMany',
       'api::template.template'
     >;
-    tags: Attribute.Relation<
-      'api::resource.resource',
-      'oneToMany',
-      'api::tag.tag'
-    >;
-    card_image: Attribute.Media;
     champions: Attribute.Relation<
       'api::resource.resource',
       'oneToMany',
@@ -894,6 +874,17 @@ export interface ApiResourceResource extends Schema.CollectionType {
       'oneToOne',
       'api::organization.organization'
     >;
+    image: Attribute.Media;
+    resource_tags: Attribute.Relation<
+      'api::resource.resource',
+      'oneToMany',
+      'api::resource-tag.resource-tag'
+    >;
+    resource_type: Attribute.Relation<
+      'api::resource.resource',
+      'oneToOne',
+      'api::resource-type.resource-type'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -912,12 +903,13 @@ export interface ApiResourceResource extends Schema.CollectionType {
   };
 }
 
-export interface ApiTagTag extends Schema.CollectionType {
-  collectionName: 'tags';
+export interface ApiResourceCategoryResourceCategory
+  extends Schema.CollectionType {
+  collectionName: 'resource_categories';
   info: {
-    singularName: 'tag';
-    pluralName: 'tags';
-    displayName: 'Tag';
+    singularName: 'resource-category';
+    pluralName: 'resource-categories';
+    displayName: 'Resource - Category';
     description: '';
   };
   options: {
@@ -925,45 +917,93 @@ export interface ApiTagTag extends Schema.CollectionType {
   };
   attributes: {
     name: Attribute.String;
-    tag_category: Attribute.Relation<
-      'api::tag.tag',
-      'oneToOne',
-      'api::tag-category.tag-category'
-    >;
-    color: Attribute.String;
+    type: Attribute.Enumeration<['Tags', 'Type', 'Persona']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::resource-category.resource-category',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::tag.tag', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::resource-category.resource-category',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
 
-export interface ApiTagCategoryTagCategory extends Schema.CollectionType {
-  collectionName: 'tag_categories';
+export interface ApiResourceTagResourceTag extends Schema.CollectionType {
+  collectionName: 'resource_tags';
   info: {
-    singularName: 'tag-category';
-    pluralName: 'tag-categories';
-    displayName: 'Tag Category';
+    singularName: 'resource-tag';
+    pluralName: 'resource-tags';
+    displayName: 'Resource - Tags';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     name: Attribute.String;
+    color: Attribute.String;
+    resource_category: Attribute.Relation<
+      'api::resource-tag.resource-tag',
+      'oneToOne',
+      'api::resource-category.resource-category'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'api::tag-category.tag-category',
+      'api::resource-tag.resource-tag',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'api::tag-category.tag-category',
+      'api::resource-tag.resource-tag',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiResourceTypeResourceType extends Schema.CollectionType {
+  collectionName: 'resource_types';
+  info: {
+    singularName: 'resource-type';
+    pluralName: 'resource-types';
+    displayName: 'Resource - Type';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    name: Attribute.String;
+    color: Attribute.String;
+    icon: Attribute.Media;
+    resource_category: Attribute.Relation<
+      'api::resource-type.resource-type',
+      'oneToOne',
+      'api::resource-category.resource-category'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::resource-type.resource-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::resource-type.resource-type',
       'oneToOne',
       'admin::user'
     > &
@@ -1021,12 +1061,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::brand.brand': ApiBrandBrand;
       'api::champion.champion': ApiChampionChampion;
-      'api::home-banner.home-banner': ApiHomeBannerHomeBanner;
+      'api::home-page.home-page': ApiHomePageHomePage;
       'api::introduction-page.introduction-page': ApiIntroductionPageIntroductionPage;
       'api::organization.organization': ApiOrganizationOrganization;
       'api::resource.resource': ApiResourceResource;
-      'api::tag.tag': ApiTagTag;
-      'api::tag-category.tag-category': ApiTagCategoryTagCategory;
+      'api::resource-category.resource-category': ApiResourceCategoryResourceCategory;
+      'api::resource-tag.resource-tag': ApiResourceTagResourceTag;
+      'api::resource-type.resource-type': ApiResourceTypeResourceType;
       'api::template.template': ApiTemplateTemplate;
     }
   }

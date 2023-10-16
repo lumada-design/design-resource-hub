@@ -7,7 +7,11 @@ export const ContentSection1 = ({ data }: Record<string, any>) => {
   return (
     <div className={classes.root}>
       <Container classes={{ root: classes.container }}>
-        <TextSection title={`What is ${title}?`} description={what} tags={tags} />
+        <TextSection
+          title={`What is ${title}?`}
+          description={what}
+          tags={tags}
+        />
       </Container>
     </div>
   );

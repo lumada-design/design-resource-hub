@@ -41,16 +41,16 @@ This will import your data locally.
 ```
 
 5. To manage your project 🚀, go to the administration panel at:
+
 ```bash
   http://localhost:1337/admin
 ```
+
 user: admin@admin.com  
 pass: Demo1234
 
-
 6. To access the app ⚡️, go to:
+
 ```bash
   http://localhost:5173/
 ```
-
-

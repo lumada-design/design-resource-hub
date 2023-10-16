@@ -5,7 +5,7 @@ import {
   Section3,
 } from "components/introduction";
 
-import { useIntroduction } from "lib/api/introduction";
+import { useIntroduction } from "lib/api/introPage";
 
 const Resource = () => {
   const { data: introduction } = useIntroduction();

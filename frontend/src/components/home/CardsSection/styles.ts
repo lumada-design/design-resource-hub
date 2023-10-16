@@ -21,9 +21,6 @@ const styles = {
   hide: css({
     display: "none",
   }),
-  tag: css({
-    marginRight: theme.space.xs,
-  }),
   org: css({
     marginTop: theme.space.sm,
   }),

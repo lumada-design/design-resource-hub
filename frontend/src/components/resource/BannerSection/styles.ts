@@ -7,7 +7,6 @@ const styles = {
     position: "relative",
     alignItems: "center",
     minHeight: 300,
-    // boxShadow: "inset 0 15px 10px -15px rgba(65,65,65,0.12)",
   }),
   tag: css({
     marginRight: theme.space.xs,
