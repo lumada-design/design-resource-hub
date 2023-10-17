@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_section_two_columns",
+  "info": {
+    "displayName": "Two Column",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title_1": {
+      "type": "string"
+    },
+    "description_1": {
+      "type": "text"
+    },
+    "button_label_1": {
+      "type": "string"
+    },
+    "button_target_1": {
+      "type": "string"
+    },
+    "title_2": {
+      "type": "string"
+    },
+    "description_2": {
+      "type": "text"
+    },
+    "button_label_2": {
+      "type": "string"
+    },
+    "button_target_2": {
+      "type": "string"
+    }
+  }
+}

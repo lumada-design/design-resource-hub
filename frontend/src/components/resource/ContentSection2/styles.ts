@@ -6,14 +6,20 @@ const styles = {
     display: "flex",
     alignItems: "center",
     minHeight: 250,
-    padding: `0 ${theme.space.sm}`,
-    "@media screen and (max-width: 900px)": {
-      padding: `${theme.space.sm} 0`,
-    },
+    padding: theme.space.sm,
   }),
   container: css({
-    "@media screen and (min-width: 900px)": {
-      gap: theme.space.lg,
+    gap: theme.space.lg,
+    "& > div": {
+      width: "50%",
+    },
+    "@media screen and (max-width: 900px)": {
+      gap: theme.space.md,
+      padding: `${theme.space.sm}`,
+      flexDirection: "column",
+      "& > div": {
+        width: "100%",
+      },
     },
   }),
 };

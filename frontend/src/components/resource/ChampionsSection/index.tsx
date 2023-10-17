@@ -4,44 +4,38 @@ import { Container } from "components/common";
 import { formatUrl } from "lib/utils";
 import classes from "./styles";
 
-export const ChampionsSection = ({ data }: Record<string, any>) => {
+export const ChampionsSection = ({ data }) => {
   const { champions } = data[0].attributes;
 
   return (
     <div className={classes.root}>
-      <Container>
-        <div style={{ width: "100%" }}>
-          <HvTypography variant="title3">
-            Resource Champions & Organization
-          </HvTypography>
-          <div className={classes.separator} />
-          <div className={classes.champions}>
-            {champions?.data.map((champion: Record<string, any>) => {
-              const { name, job, organization, avatar } = champion.attributes;
-              const avatarUrl = avatar.data.attributes.url;
+      <Container className={classes.container}>
+        <HvTypography variant="title3">
+          Resource Champions & Organization
+        </HvTypography>
+        <div className={classes.separator} />
+        <div className={classes.champions}>
+          {champions?.data.map((champion) => {
+            const { name, job, organization, avatar } = champion.attributes;
+            const avatarUrl = avatar.data?.attributes.url;
+            const orgName = organization?.data?.attributes.name;
 
-              return (
-                <div key={champion.id} className={classes.container}>
-                  <img
-                    src={formatUrl(avatarUrl)}
-                    alt="icon"
-                    className={classes.picture}
-                  />
-                  <div className={classes.text}>
-                    <HvTypography
-                      variant="caption1"
-                      style={{ fontWeight: 600 }}
-                    >
-                      {name}|{job}
-                    </HvTypography>
-                    <HvTypography variant="caption1">
-                      {organization}
-                    </HvTypography>
-                  </div>
+            return (
+              <div key={champion.id} className={classes.content}>
+                <img
+                  src={formatUrl(avatarUrl)}
+                  alt="icon"
+                  className={classes.picture}
+                />
+                <div className={classes.text}>
+                  <HvTypography variant="caption1" style={{ fontWeight: 600 }}>
+                    {name}|{job}
+                  </HvTypography>
+                  <HvTypography variant="caption1">{orgName}</HvTypography>
                 </div>
-              );
-            })}
-          </div>
+              </div>
+            );
+          })}
         </div>
       </Container>
     </div>

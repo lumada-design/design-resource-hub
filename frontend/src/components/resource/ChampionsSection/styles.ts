@@ -10,6 +10,10 @@ const styles = {
     minHeight: 300,
     background: theme.colors.atmo2,
   }),
+  container: css({
+    display: "flex",
+    flexDirection: "column",
+  }),
   separator: css({
     width: 55,
     borderTop: `2px solid ${theme.colors.brand}`,
@@ -17,16 +21,17 @@ const styles = {
   }),
   champions: css({
     display: "flex",
-    flexDirection: "column",
     justifyContent: "center",
+    flexDirection: "column",
     alignItems: "center",
     gap: theme.space.md,
-    "@media screen and (min-width: 600px)": {
+    "@media screen and (min-width: 900px)": {
       flexDirection: "row",
       gap: 130,
     },
   }),
-  container: css({
+  content: css({
+    display: "flex",
     alignItems: "center",
     gap: theme.space.sm,
   }),

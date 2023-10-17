@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_section_single_columns",
+  "info": {
+    "displayName": "Single Column",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "button_label": {
+      "type": "string"
+    },
+    "button_target": {
+      "type": "string"
+    }
+  }
+}

@@ -31,6 +31,7 @@ export const Footer = () => {
 
   const { brand_name, brand_tagline, main_menu, secondary_menu, copyright } =
     brand.data.attributes;
+
   const mainMenu: Item[] = parseLinks(main_menu);
   const secondaryMenu: Item[] = parseLinks(secondary_menu);
 

@@ -14,7 +14,7 @@ export const BannerSection = ({ data }: Record<string, any>) => {
   const isMdUp = useMediaQuery(theme.breakpoints.up("md"));
 
   const { banner_title, banner_image } = data.attributes;
-  const imageUrl = banner_image.data.attributes.url;
+  const imageUrl = banner_image.data?.attributes.url;
 
   return (
     <div

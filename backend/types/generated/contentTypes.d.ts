@@ -726,9 +726,13 @@ export interface ApiChampionChampion extends Schema.CollectionType {
   attributes: {
     name: Attribute.String;
     job: Attribute.String;
-    organization: Attribute.String;
     email: Attribute.Email;
     avatar: Attribute.Media;
+    organization: Attribute.Relation<
+      'api::champion.champion',
+      'oneToOne',
+      'api::organization.organization'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -885,6 +889,8 @@ export interface ApiResourceResource extends Schema.CollectionType {
       'oneToOne',
       'api::resource-type.resource-type'
     >;
+    section_1: Attribute.Component<'section.single-column'>;
+    section_2: Attribute.Component<'section.two-column'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -917,7 +923,7 @@ export interface ApiResourceCategoryResourceCategory
   };
   attributes: {
     name: Attribute.String;
-    type: Attribute.Enumeration<['Tags', 'Type', 'Persona']>;
+    type: Attribute.Enumeration<['Tags', 'Type']>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -929,6 +935,41 @@ export interface ApiResourceCategoryResourceCategory
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::resource-category.resource-category',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiResourcePageResourcePage extends Schema.SingleType {
+  collectionName: 'resource_pages';
+  info: {
+    singularName: 'resource-page';
+    pluralName: 'resource-pages';
+    displayName: 'Resource Page';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    download_title: Attribute.String;
+    download_description: Attribute.Text;
+    download_button_label: Attribute.String;
+    download_button_target: Attribute.String;
+    champion_title: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::resource-page.resource-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::resource-page.resource-page',
       'oneToOne',
       'admin::user'
     > &
@@ -993,6 +1034,7 @@ export interface ApiResourceTypeResourceType extends Schema.CollectionType {
       'oneToOne',
       'api::resource-category.resource-category'
     >;
+    image: Attribute.Media;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1066,6 +1108,7 @@ declare module '@strapi/types' {
       'api::organization.organization': ApiOrganizationOrganization;
       'api::resource.resource': ApiResourceResource;
       'api::resource-category.resource-category': ApiResourceCategoryResourceCategory;
+      'api::resource-page.resource-page': ApiResourcePageResourcePage;
       'api::resource-tag.resource-tag': ApiResourceTagResourceTag;
       'api::resource-type.resource-type': ApiResourceTypeResourceType;
       'api::template.template': ApiTemplateTemplate;

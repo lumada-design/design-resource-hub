@@ -18,16 +18,21 @@
     "job": {
       "type": "string"
     },
-    "organization": {
-      "type": "string"
-    },
     "email": {
       "type": "email"
     },
     "avatar": {
-      "allowedTypes": ["images"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "organization": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::organization.organization"
     }
   }
 }

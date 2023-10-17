@@ -1,33 +1,29 @@
+import hexToRgba from "hex-to-rgba";
 import { useNavigate } from "react-router-dom";
-import {
-  HvTypography,
-  HvTag,
-  HvButton,
-} from "@hitachivantara/uikit-react-core";
+import { HvTypography, HvButton } from "@hitachivantara/uikit-react-core";
 import { Backwards } from "@hitachivantara/uikit-react-icons";
 
-import { Container } from "components/common";
+import { Container, TagsList } from "components/common";
 import classes from "./styles";
 import { formatText, formatUrl } from "lib/utils";
 
-export const BannerSection = ({ resourceData, bannerData }) => {
+export const BannerSection = ({ data }) => {
   const navigate = useNavigate();
 
-  const { title, description, tags } = resourceData.attributes;
-  const { image } = bannerData.attributes;
-  const imageUrl = image.data.attributes.url;
+  const { name, description, organization, resource_type } = data[0].attributes;
+  const { image, color } = resource_type.data.attributes;
+  const { name: orgName } = organization.data.attributes;
+  const imageUrl = image.data?.attributes.url;
 
-  const color =
-    tags.data.filter((tag) => !!tag.attributes.color)[0]?.attributes.color ||
-    "rgba(218, 230, 240, .5)";
+  const tagColor = hexToRgba(color, 0.3);
 
   return (
     <div
       className={classes.root}
       style={{
-        background: `-webkit-linear-gradient(${color}, ${color}), url(${formatUrl(
+        background: `-webkit-linear-gradient(${tagColor}, ${tagColor}), url(${formatUrl(
           imageUrl,
-        )}) no-repeat center center / cover`,
+        )}) no-repeat bottom / cover`,
       }}
     >
       <Container>
@@ -41,23 +37,15 @@ export const BannerSection = ({ resourceData, bannerData }) => {
           >
             Back
           </HvButton>
-          <HvTypography variant="title1">{title}</HvTypography>
-          <div>
-            {tags.data.map((tag: Record<string, any>) => {
-              const { name, color } = tag.attributes;
-              return (
-                <HvTag
-                  className={classes.tag}
-                  key={tag.id}
-                  label={name}
-                  type="categorical"
-                  style={{ backgroundColor: color }}
-                />
-              );
-            })}
-          </div>
-          <HvTypography className={classes.description}>
+          <HvTypography className={classes.text} variant="title1">
+            {name}
+          </HvTypography>
+          <TagsList data={data[0]} />
+          <HvTypography className={classes.text}>
             {formatText(description)}
+          </HvTypography>
+          <HvTypography className={classes.text}>
+            {formatText(orgName)}
           </HvTypography>
         </span>
       </Container>

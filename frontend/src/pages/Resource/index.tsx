@@ -7,31 +7,26 @@ import {
 } from "components/resource";
 
 import { useResource } from "lib/api/resource";
-import { useBanners } from "lib/api/banner";
+import { useResourcePage } from "lib/api/resourcePage";
+import classes from "./styles";
 
 const Resource = () => {
   const { data: resource } = useResource();
-  const { data: banners } = useBanners();
+  const { data: resourcePage } = useResourcePage();
 
-  if (!resource || !banners) return null;
-
-  const bannerData = banners.data.filter(
-    (item) => item.attributes.type === "Resource",
-  )[0];
+  if (!resource || !resourcePage) return null;
+  console.log("resource: ", resource);
 
   return (
-    resource && (
-      <>
-        <BannerSection
-          bannerData={bannerData}
-          resourceData={resource.data[0]}
-        />
-        {/* <ContentSection1 data={resource.data} />
+    <>
+      <BannerSection data={resource.data} />
+      <div className={classes.container}>
+        <ContentSection1 data={resource.data} />
         <ContentSection2 data={resource.data} />
-        <TemplatesSection data={resource.data} />
-        <ChampionsSection data={resource.data} /> */}
-      </>
-    )
+        <TemplatesSection data={resource.data} page={resourcePage.data} />
+        <ChampionsSection data={resource.data} />
+      </div>
+    </>
   );
 };
 

@@ -11,8 +11,9 @@ const styles = {
   tag: css({
     marginRight: theme.space.xs,
   }),
-  description: css({
+  text: css({
     marginTop: theme.space.sm,
+    maxWidth: 500,
   }),
   button: css({
     marginBottom: theme.space.sm,

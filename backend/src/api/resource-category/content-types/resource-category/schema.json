@@ -19,8 +19,7 @@
       "type": "enumeration",
       "enum": [
         "Tags",
-        "Type",
-        "Persona"
+        "Type"
       ]
     }
   }

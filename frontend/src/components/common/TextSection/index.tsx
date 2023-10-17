@@ -1,16 +1,11 @@
-import { HvTypography, HvTag } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import classes from "./styles";
 import { formatText } from "lib/utils";
 
-export const TextSection = ({
-  title,
-  description,
-  tags,
-  style,
-}: Record<string, any>) => {
+export const TextSection = ({ title, description }) => {
   return (
-    <div className={classes.root} style={{ ...style }}>
+    <div>
       <HvTypography variant="title3" style={{ whiteSpace: "pre-wrap" }}>
         {formatText(title)}
       </HvTypography>
@@ -21,20 +16,6 @@ export const TextSection = ({
       >
         {formatText(description)}
       </HvTypography>
-      <span>
-        {tags?.data.map((tag: Record<string, any>) => {
-          const { name, color } = tag.attributes;
-          return (
-            <HvTag
-              className={classes.tag}
-              key={tag.id}
-              label={name}
-              type="categorical"
-              style={{ backgroundColor: color }}
-            />
-          );
-        })}
-      </span>
     </div>
   );
 };

@@ -2,9 +2,6 @@ import { css } from "@emotion/css";
 import { theme } from "@hitachivantara/uikit-styles";
 
 const styles = {
-  root: css({
-    minWidth: "45%",
-  }),
   separator: css({
     width: 55,
     borderTop: `2px solid ${theme.colors.brand}`,

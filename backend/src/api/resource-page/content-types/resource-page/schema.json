@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "resource_pages",
+  "info": {
+    "singularName": "resource-page",
+    "pluralName": "resource-pages",
+    "displayName": "Resource Page",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "download_title": {
+      "type": "string"
+    },
+    "download_description": {
+      "type": "text"
+    },
+    "download_button_label": {
+      "type": "string"
+    },
+    "download_button_target": {
+      "type": "string"
+    },
+    "champion_title": {
+      "type": "string"
+    }
+  }
+}

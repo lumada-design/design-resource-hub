@@ -7,13 +7,10 @@ import {
 } from "@hitachivantara/uikit-react-core";
 
 import { useFiltersStore } from "lib/store/filters";
-import {
-  useResources,
-  useResourceCategories,
-  useResourceTags,
-} from "lib/api/resource";
+import { getResourceTypes } from "lib/utils";
+import { useResources, useResourceTags } from "lib/api/resource";
 import classes from "./styles";
-import { getResourceTypes, groupResourceTags, setTagsCounter } from "./utils";
+import { groupResourceTags, setTagsCounter } from "./utils";
 
 export const FilterSection = () => {
   const {
@@ -23,12 +20,12 @@ export const FilterSection = () => {
     setResourceFilters,
   } = useFiltersStore();
   const { data: resources } = useResources();
-  const { data: resourceCategories } = useResourceCategories();
 
   useEffect(() => {
-    const types = getResourceTypes(resources, resourceCategories);
+    if (!resources) return;
+    const types = getResourceTypes(resources.data[0]);
     setResourceTypes(types);
-  }, [resourceCategories]);
+  }, [resources]);
 
   const { data: resourceTags } = useResourceTags(resourceTypes || []);
   const groupedTags = groupResourceTags(merge.all(resourceTags || []));

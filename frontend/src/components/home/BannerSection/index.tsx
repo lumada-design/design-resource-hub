@@ -6,8 +6,8 @@ import classes from "./styles";
 
 export const BannerSection = ({ data }) => {
   const { title, description, button_label, button_target, image } =
-    data.attributes;
-  const imageUrl = image.data.attributes.url;
+    data?.attributes;
+  const imageUrl = image.data?.attributes.url;
 
   return (
     <div

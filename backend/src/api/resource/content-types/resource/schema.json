@@ -53,6 +53,16 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::resource-type.resource-type"
+    },
+    "section_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.single-column"
+    },
+    "section_2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.two-column"
     }
   }
 }
