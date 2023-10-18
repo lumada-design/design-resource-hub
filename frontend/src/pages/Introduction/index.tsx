@@ -1,24 +1,26 @@
 import {
   BannerSection,
-  Section1,
-  Section2,
-  Section3,
+  ContentSection1,
+  ContentSection2,
+  ContentSection3,
 } from "components/introduction";
 
-import { useIntroPage } from "lib/api/introPage";
+import { useIntroPage } from "lib/api/page";
 
 const Resource = () => {
-  const { data: introduction } = useIntroPage();
+  const { data: intro } = useIntroPage();
+
+  if (!intro) return null;
 
   return (
-    introduction && (
+    <div>
+      <BannerSection data={intro.data} />
       <>
-        <BannerSection data={introduction.data} />
-        <Section1 data={introduction.data} />
-        <Section2 data={introduction.data} />
-        <Section3 data={introduction.data} />
+        <ContentSection1 data={intro.data} />
+        <ContentSection2 data={intro.data} />
+        <ContentSection3 data={intro.data} />
       </>
-    )
+    </div>
   );
 };
 

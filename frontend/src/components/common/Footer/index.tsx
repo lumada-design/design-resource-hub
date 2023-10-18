@@ -4,6 +4,7 @@ import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import { Container } from "components/common";
 import { useBrand } from "lib/api/brand";
+import { parseLinks } from "lib/utils";
 
 import classes from "./styles";
 
@@ -11,16 +12,6 @@ type Item = {
   label: string;
   href: string;
 } | null;
-
-const parseLinks = (links: string) => {
-  return links
-    .split(";")
-    .map((link: string) => {
-      const [label, href] = link.replace(/(\r\n|\n|\r)/gm, "").split("|");
-      return label.length ? { label, href } : null;
-    })
-    .filter(Boolean);
-};
 
 export const Footer = () => {
   const theme = useTheme();

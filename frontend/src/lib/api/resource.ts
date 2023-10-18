@@ -46,3 +46,14 @@ export const useResourceTags = (resourceTypes) => {
     },
   );
 };
+
+export const useResourceTagsCategory = (category) => {
+  return useSWR(
+    `/resource-tags?filters[resource_category][name][$eq]=${category}&populate=deep`,
+    fetcher,
+  );
+};
+
+export const useResourceTypes = () => {
+  return useSWR(`/resource-types?populate=deep`, fetcher);
+};

@@ -8,18 +8,11 @@ const styles = {
     alignItems: "center",
     minHeight: 300,
   }),
-  button: css({
-    marginBottom: theme.space.md,
-    position: "absolute",
-    top: theme.spacing(2),
-  }),
-  buttonUp: css({
-    marginBottom: theme.space.md,
-    position: "absolute",
-    top: theme.spacing(4),
-  }),
-  title: css({
+  text: css({
     maxWidth: 650,
+  }),
+  button: css({
+    marginBottom: theme.space.sm,
   }),
 };
 

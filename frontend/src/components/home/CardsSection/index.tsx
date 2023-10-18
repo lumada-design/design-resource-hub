@@ -55,7 +55,7 @@ export const CardsSection = () => {
         const resourceUrl = `/resource/${resource.id}`;
 
         return (
-          <HvGrid item md={4} sm={6} xs={12} key={resource.id}>
+          <HvGrid item lg={4} sm={6} xs={12} key={resource.id}>
             <HvCard
               bgcolor="atmo1"
               statusColor="negative"

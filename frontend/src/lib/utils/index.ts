@@ -20,6 +20,21 @@ export const formatUrl = (url: string) => {
 };
 
 /**
+ *  Parse links from a string
+ * @param links - The string to parse links from
+ * @returns An array of links
+ */
+export const parseLinks = (links: string) => {
+  return links
+    .split(";")
+    .map((link: string) => {
+      const [label, href] = link.replace(/(\r\n|\n|\r)/gm, "").split("|");
+      return label.length ? { label, href } : null;
+    })
+    .filter(Boolean);
+};
+
+/**
  * Add plural to a string if it doesn't already have it
  * @param inputString - The string to add plural to
  * @returns The string with plural added

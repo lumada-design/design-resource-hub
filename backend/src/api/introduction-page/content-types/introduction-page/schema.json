@@ -13,12 +13,33 @@
   "pluginOptions": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "text"
     },
     "image": {
-      "allowedTypes": ["images", "files", "videos", "audios"],
       "type": "media",
-      "multiple": false
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "section_1": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.single-column"
+    },
+    "section_2": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.single-column"
+    },
+    "section_3": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.two-column"
     }
   }
 }

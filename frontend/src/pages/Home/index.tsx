@@ -5,7 +5,7 @@ import { HvGrid, HvInput } from "@hitachivantara/uikit-react-core";
 import { Container } from "components/common";
 import { BannerSection, CardsSection, FilterSection } from "components/home";
 import { useFiltersStore } from "lib/store/filters";
-import { useHomePage } from "lib/api/homePage";
+import { useHomePage } from "lib/api/page";
 import classes from "./styles";
 
 const Resources = () => {
@@ -33,7 +33,7 @@ const Resources = () => {
             )}
             <HvGrid item md={9} xs={12}>
               <HvGrid container>
-                <HvGrid item md={4} sm={6} xs={12}>
+                <HvGrid item lg={4} sm={6} xs={12}>
                   <HvInput
                     aria-label="search"
                     placeholder="Search"

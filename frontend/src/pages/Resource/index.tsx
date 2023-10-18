@@ -7,7 +7,7 @@ import {
 } from "components/resource";
 
 import { useResource } from "lib/api/resource";
-import { useResourcePage } from "lib/api/resourcePage";
+import { useResourcePage } from "lib/api/page";
 
 const Resource = () => {
   const { data: resource } = useResource();

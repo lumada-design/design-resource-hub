@@ -15,7 +15,7 @@ export const BannerSection = ({ data }) => {
   const { name: orgName } = organization.data.attributes;
   const imageUrl = image.data?.attributes.url;
 
-  const tagColor = hexToRgba(color, 0.3);
+  const tagColor = hexToRgba(color, 0.2);
 
   return (
     <div

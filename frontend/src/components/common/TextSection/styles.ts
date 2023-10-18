@@ -13,6 +13,12 @@ const styles = {
   tag: css({
     marginRight: theme.space.xs,
   }),
+  noTitle: css({
+    marginTop: 55,
+    "@media screen and (max-width: 900px)": {
+      marginTop: 0,
+    },
+  }),
 };
 
 export default styles;

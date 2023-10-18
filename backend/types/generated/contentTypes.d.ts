@@ -798,8 +798,11 @@ export interface ApiIntroductionPageIntroductionPage extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    title: Attribute.String;
+    title: Attribute.Text;
     image: Attribute.Media;
+    section_1: Attribute.Component<'section.single-column'>;
+    section_2: Attribute.Component<'section.single-column'>;
+    section_3: Attribute.Component<'section.two-column'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -996,6 +999,7 @@ export interface ApiResourceTagResourceTag extends Schema.CollectionType {
       'oneToOne',
       'api::resource-category.resource-category'
     >;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1035,6 +1039,7 @@ export interface ApiResourceTypeResourceType extends Schema.CollectionType {
       'api::resource-category.resource-category'
     >;
     image: Attribute.Media;
+    description: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
