@@ -2,15 +2,12 @@ import { css } from "@emotion/css";
 import { theme } from "@hitachivantara/uikit-react-core";
 
 const styles = {
-  loading: css({
+  status: css({
     display: "flex",
-    alignItems: "center",
-    minHeight: `calc(100vh - 600px)`,
+    height: 400,
   }),
   empty: css({
-    display: "flex",
     alignItems: "center",
-    minHeight: `calc(100vh - 600px)`,
   }),
   card: css({
     outline: "none",

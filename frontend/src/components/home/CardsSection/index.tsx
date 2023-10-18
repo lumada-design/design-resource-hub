@@ -7,10 +7,9 @@ import {
   HvTypography,
   HvEmptyState,
 } from "@hitachivantara/uikit-react-core";
-import { Info } from "@hitachivantara/uikit-react-icons";
 import { useNavigate } from "react-router-dom";
 
-import { Loading, TagsList } from "components/common";
+import { Status, TagsList } from "components/common";
 import { useResources } from "lib/api/resource";
 import { useFiltersStore } from "lib/store/filters";
 import { formatUrl } from "lib/utils";
@@ -27,20 +26,22 @@ export const CardsSection = () => {
 
   if (isLoading) {
     return (
-      <div className={classes.loading}>
-        <Loading />
+      <div className={classes.status}>
+        <Status />
       </div>
     );
   }
 
   if (!resources?.data.length) {
     return (
-      <HvEmptyState
-        title="No resources found"
-        message="Try changing your filters or searching for something else"
-        icon={<Info />}
-        classes={{ root: classes.empty }}
-      />
+      <div className={classes.status}>
+        <HvEmptyState
+          title="No resources found"
+          message="Try changing your filters or searching for something else"
+          icon={null}
+          classes={{ root: classes.empty }}
+        />
+      </div>
     );
   }
 

@@ -36,7 +36,7 @@ export const Footer = () => {
   const secondaryMenu: Item[] = parseLinks(secondary_menu);
 
   return (
-    <>
+    <div>
       <div className={classes.area1}>
         <Container>
           <div className={classes.brand}>
@@ -77,6 +77,6 @@ export const Footer = () => {
           </ul>
         </Container>
       </div>
-    </>
+    </div>
   );
 };

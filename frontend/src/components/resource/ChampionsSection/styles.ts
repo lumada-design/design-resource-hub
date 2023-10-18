@@ -25,7 +25,7 @@ const styles = {
     flexDirection: "column",
     alignItems: "center",
     gap: theme.space.md,
-    "@media screen and (min-width: 900px)": {
+    "@media screen and (min-width: 600px)": {
       flexDirection: "row",
       gap: 130,
     },

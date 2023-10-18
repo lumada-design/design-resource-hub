@@ -16,9 +16,8 @@ const styles = {
     maxWidth: 500,
   }),
   button: css({
-    marginBottom: theme.space.sm,
     position: "absolute",
-    top: theme.spacing(5),
+    top: theme.spacing(4),
   }),
 };
 

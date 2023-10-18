@@ -1,18 +1,19 @@
-import "lib/i18n";
 import { BrowserRouter as Router } from "react-router-dom";
 import { HvProvider } from "@hitachivantara/uikit-react-core";
 
-import { Header, Footer } from "components/common";
+import { Header, Footer, Suspense } from "components/common";
 import Routes from "lib/routes";
 
 const App = () => (
-  <Router>
-    <HvProvider rootElementId="hv-root">
+  <HvProvider rootElementId="hv-root">
+    <Router>
       <Header />
-      <Routes />
+      <Suspense>
+        <Routes />
+      </Suspense>
       <Footer />
-    </HvProvider>
-  </Router>
+    </Router>
+  </HvProvider>
 );
 
 export default App;
