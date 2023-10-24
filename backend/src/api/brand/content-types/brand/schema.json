@@ -18,14 +18,21 @@
     "brand_tagline": {
       "type": "string"
     },
-    "main_menu": {
-      "type": "text"
-    },
     "copyright": {
       "type": "string"
     },
+    "main_menu": {
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.menu-item"
+    },
     "secondary_menu": {
-      "type": "text"
+      "type": "component",
+      "repeatable": true,
+      "component": "navigation.menu-item"
+    },
+    "contact_email": {
+      "type": "string"
     }
   }
 }

@@ -22,7 +22,7 @@ const Resource = () => {
         <ContentSection1 data={resource.data} />
         <ContentSection2 data={resource.data} />
         <TemplatesSection data={resource.data} page={resourcePage.data} />
-        <ChampionsSection data={resource.data} />
+        <ChampionsSection data={resource.data} page={resourcePage.data} />
       </>
     </div>
   );

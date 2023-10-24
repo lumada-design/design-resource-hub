@@ -2,16 +2,10 @@ import clsx from "clsx";
 import { useMediaQuery, useTheme } from "@mui/material";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-import { Container } from "components/common";
+import { Container, LinkNav } from "components/common";
 import { useBrand } from "lib/api/brand";
-import { parseLinks } from "lib/utils";
 
 import classes from "./styles";
-
-type Item = {
-  label: string;
-  href: string;
-} | null;
 
 export const Footer = () => {
   const theme = useTheme();
@@ -23,9 +17,6 @@ export const Footer = () => {
   const { brand_name, brand_tagline, main_menu, secondary_menu, copyright } =
     brand.data.attributes;
 
-  const mainMenu: Item[] = parseLinks(main_menu);
-  const secondaryMenu: Item[] = parseLinks(secondary_menu);
-
   return (
     <div>
       <div className={classes.area1}>
@@ -36,11 +27,13 @@ export const Footer = () => {
           <ul
             className={clsx(classes.menu, { [classes.smallScreen]: isMdDown })}
           >
-            {mainMenu.map((item) => (
+            {main_menu.map((item) => (
               <li key={item?.label}>
-                <HvTypography variant="label" component="a" href={item?.href}>
-                  {item?.label}
-                </HvTypography>
+                <LinkNav
+                  label={item?.label}
+                  target={item?.target}
+                  variant="label"
+                />
               </li>
             ))}
           </ul>
@@ -54,15 +47,13 @@ export const Footer = () => {
           <ul
             className={clsx(classes.menu, { [classes.smallScreen]: isMdDown })}
           >
-            {secondaryMenu.map((item) => (
+            {secondary_menu.map((item) => (
               <li key={item?.label}>
-                <HvTypography
+                <LinkNav
+                  label={item?.label}
+                  target={item?.target}
                   variant="caption1"
-                  component="a"
-                  href={item?.href}
-                >
-                  {item?.label}
-                </HvTypography>
+                />
               </li>
             ))}
           </ul>

@@ -39,6 +39,9 @@ const styles = {
   description: css({
     maxWidth: 600,
   }),
+  link: css({
+    margin: `${theme.space.xs} 0 0 ${theme.space.sm}`,
+  }),
 };
 
 export default styles;

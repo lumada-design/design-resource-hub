@@ -12,20 +12,15 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "download_title": {
-      "type": "string"
+    "templates_section": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.single-column"
     },
-    "download_description": {
-      "type": "text"
-    },
-    "download_button_label": {
-      "type": "string"
-    },
-    "download_button_target": {
-      "type": "string"
-    },
-    "champion_title": {
-      "type": "string"
+    "champions_section": {
+      "type": "component",
+      "repeatable": false,
+      "component": "section.single-column"
     }
   }
 }

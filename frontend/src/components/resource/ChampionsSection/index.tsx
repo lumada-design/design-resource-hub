@@ -4,15 +4,14 @@ import { Container } from "components/common";
 import { formatUrl } from "lib/utils";
 import classes from "./styles";
 
-export const ChampionsSection = ({ data }) => {
+export const ChampionsSection = ({ data, page }) => {
   const { champions } = data[0].attributes;
+  const { title } = page.attributes.champions_section;
 
   return (
     <div className={classes.root}>
       <Container className={classes.container}>
-        <HvTypography variant="title3">
-          Resource Champions & Organization
-        </HvTypography>
+        <HvTypography variant="title3">{title}</HvTypography>
         <div className={classes.separator} />
         <div className={classes.champions}>
           {champions?.data.map((champion) => {

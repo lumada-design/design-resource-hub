@@ -1,6 +1,4 @@
-import { HvButton } from "@hitachivantara/uikit-react-core";
-
-import { Container, TextSection } from "components/common";
+import { Container, TextSection, LinkNav } from "components/common";
 import classes from "./styles";
 
 export const ContentSection3 = ({ data }) => {
@@ -13,12 +11,19 @@ export const ContentSection3 = ({ data }) => {
           title={section_3.title_1}
           description={section_3.description_1}
         >
-          <HvButton variant="primarySubtle">
-            {section_3.button_label_1}
-          </HvButton>
+          <LinkNav
+            label={section_3.button_label_1}
+            target={section_3.button_target_1}
+            variant="primarySubtle"
+            isButton
+          />
         </TextSection>
         <TextSection description={section_3.description_2}>
-          <HvButton>{section_3.button_label_2}</HvButton>
+          <LinkNav
+            label={section_3.button_label_2}
+            target={section_3.button_target_2}
+            isButton
+          />
         </TextSection>
       </Container>
     </div>

@@ -1,12 +1,12 @@
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-import { Container, LinkButton } from "components/common";
+import { Container, LinkNav } from "components/common";
 import { formatText, formatUrl } from "lib/utils";
 import classes from "./styles";
 
 export const BannerSection = ({ data }) => {
   const { title, description, button_label, button_target, image } =
-    data?.attributes;
+    data.attributes;
   const imageUrl = image.data?.attributes.url;
 
   return (
@@ -30,7 +30,7 @@ export const BannerSection = ({ data }) => {
             {formatText(description)}
           </HvTypography>
         </div>
-        <LinkButton label={button_label} target={button_target} />
+        <LinkNav label={button_label} target={button_target} isButton />
       </Container>
     </div>
   );

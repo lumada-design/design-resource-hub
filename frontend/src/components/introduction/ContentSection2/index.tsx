@@ -1,5 +1,3 @@
-import hexToRgba from "hex-to-rgba";
-
 import { Container, TextSection } from "components/common";
 import { useResourceTypes } from "lib/api/resource";
 import classes from "./styles";
@@ -19,13 +17,12 @@ export const ContentSection2 = ({ data }) => {
         <div className={classes.resources}>
           {resourceTypes?.data.map((resourceType) => {
             const { name, description, color } = resourceType.attributes;
-            const rgbColor = hexToRgba(color, 0.2);
 
             return (
               <div
                 key={resourceType.id}
                 className={classes.resource}
-                style={{ background: rgbColor }}
+                style={{ background: color }}
               >
                 <HvTypography variant="label">{name}</HvTypography>
                 <HvTypography>{description}</HvTypography>

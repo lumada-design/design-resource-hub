@@ -1,18 +1,18 @@
-import { HvTypography, HvButton } from "@hitachivantara/uikit-react-core";
+import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-import { Container } from "components/common";
+import { Container, LinkNav } from "components/common";
 import { formatUrl } from "lib/utils";
 import classes from "./styles";
 
 export const TemplatesSection = ({ data, page }) => {
   const { templates } = data[0].attributes;
-  const { download_title, download_description, download_button_label } =
-    page.attributes;
+  const { title, description, button_label, button_target } =
+    page.attributes.templates_section;
 
   return (
     <div className={classes.root}>
       <Container classes={{ root: classes.content }}>
-        <HvTypography variant="title3">{download_title}</HvTypography>
+        <HvTypography variant="title3">{title}</HvTypography>
         <div className={classes.separator} />
         <div className={classes.templates}>
           {templates?.data.map((template) => {
@@ -22,20 +22,26 @@ export const TemplatesSection = ({ data, page }) => {
             return (
               <div key={template.id} className={classes.icons}>
                 <img src={formatUrl(iconUrl)} alt="icon" />
-                <HvButton component="a" href={link} variant="secondaryGhost">
-                  <HvTypography key={template.id} variant="label">
-                    {name}
-                  </HvTypography>
-                </HvButton>
+                <LinkNav
+                  label={name}
+                  target={link}
+                  variant="label"
+                  className={classes.link}
+                />
               </div>
             );
           })}
         </div>
         <div className={classes.access}>
           <HvTypography className={classes.description} variant="caption1">
-            {download_description}
+            {description}
           </HvTypography>
-          <HvButton variant="primarySubtle">{download_button_label}</HvButton>
+          <LinkNav
+            label={button_label}
+            target={button_target}
+            variant="primarySubtle"
+            isButton
+          />
         </div>
       </Container>
     </div>

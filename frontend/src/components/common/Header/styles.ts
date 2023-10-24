@@ -14,6 +14,21 @@ const styles = {
   logo: css({
     cursor: "pointer",
   }),
+  actions: css({
+    margin: "0 0 0 auto",
+    cursor: "pointer",
+    paddingRight: theme.space.sm,
+    display: "inline-flex",
+    alignItems: "center",
+    background: "transparent",
+    "& > p": {
+      fontFamily: "Arial,Helvetica,sans-serif",
+      fontWeight: 400,
+      fontSize: 13,
+      color: "black",
+      marginLeft: theme.space.xs,
+    },
+  }),
   area2: css({
     display: "flex",
     alignItems: "center",
@@ -37,8 +52,10 @@ const styles = {
       padding: theme.space.sm,
     },
     "& li:hover": {
-      cursor: "pointer",
       backgroundColor: "#b1000e",
+      "& a": {
+        cursor: "pointer",
+      },
       "& *": {
         color: theme.colors.base_light,
       },

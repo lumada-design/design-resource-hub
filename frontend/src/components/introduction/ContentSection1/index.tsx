@@ -1,7 +1,5 @@
-import hexToRgba from "hex-to-rgba";
-
 import { Container, TextSection } from "components/common";
-import { useResourceTypes, useResourceTagsCategory } from "lib/api/resource";
+import { useResourceTagsCategory } from "lib/api/resource";
 import classes from "./styles";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 

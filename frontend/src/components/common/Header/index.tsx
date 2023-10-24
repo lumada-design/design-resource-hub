@@ -4,16 +4,11 @@ import { useMediaQuery, useTheme } from "@mui/material";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import HitachiLogo from "assets/HitachiLogo";
-import { Container } from "components/common";
+import MailIcon from "assets/MailIcon";
+import { Container, LinkNav } from "components/common";
 import { useBrand } from "lib/api/brand";
-import { parseLinks } from "lib/utils";
 
 import classes from "./styles";
-
-type Item = {
-  label: string;
-  href: string;
-} | null;
 
 export const Header = () => {
   const navigate = useNavigate();
@@ -23,9 +18,7 @@ export const Header = () => {
 
   if (!brand) return <div className={classes.preload} />;
 
-  const { brand_name, brand_tagline, main_menu } = brand.data.attributes;
-  const menu: Item[] = parseLinks(main_menu);
-
+  const { brand_name, brand_tagline, main_menu, contact_email } = brand.data.attributes;
   return (
     <>
       <div className={classes.area1}>
@@ -33,6 +26,14 @@ export const Header = () => {
           <div className={classes.logo}>
             <HitachiLogo onClick={() => navigate("/")} />
           </div>
+          <button
+            type="button"
+            className={classes.actions}
+            onClick={() => (window.location.href = `mailto:${contact_email}`)}
+          >
+            <MailIcon onClick={() => navigate("/")} />
+            <p>Contact Us</p>
+          </button>
         </Container>
       </div>
       <div className={classes.area2}>
@@ -45,11 +46,13 @@ export const Header = () => {
           <ul
             className={clsx(classes.menu, { [classes.smallScreen]: isMdDown })}
           >
-            {menu.map((item) => (
+            {main_menu.map((item) => (
               <li key={item?.label}>
-                <HvTypography variant="label" component="a" href={item?.href}>
-                  {item?.label}
-                </HvTypography>
+                <LinkNav
+                  label={item?.label}
+                  target={item?.target}
+                  variant="label"
+                />
               </li>
             ))}
           </ul>

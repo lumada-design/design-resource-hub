@@ -1,4 +1,3 @@
-import hexToRgba from "hex-to-rgba";
 import { useNavigate } from "react-router-dom";
 import { HvTypography, HvButton } from "@hitachivantara/uikit-react-core";
 import { Backwards } from "@hitachivantara/uikit-react-icons";
@@ -15,13 +14,11 @@ export const BannerSection = ({ data }) => {
   const { name: orgName } = organization.data.attributes;
   const imageUrl = image.data?.attributes.url;
 
-  const tagColor = hexToRgba(color, 0.2);
-
   return (
     <div
       className={classes.root}
       style={{
-        background: `-webkit-linear-gradient(${tagColor}, ${tagColor}), url(${formatUrl(
+        background: `-webkit-linear-gradient(${color}, ${color}), url(${formatUrl(
           imageUrl,
         )}) no-repeat bottom / cover`,
       }}

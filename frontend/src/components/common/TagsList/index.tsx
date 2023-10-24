@@ -1,4 +1,3 @@
-import hexToRgba from "hex-to-rgba";
 import { HvTag } from "@hitachivantara/uikit-react-core";
 
 import { getResourceTypes } from "lib/utils";
@@ -19,15 +18,13 @@ export const TagsList = ({ data }) => {
   return tagsList.map((tag) => {
     const { name, color } = tag.attributes;
 
-    const tagColor = color ? hexToRgba(color, 0.3) : undefined;
-
     return (
       <HvTag
         className={classes.tag}
         key={`${tag.id}-${name}`}
         label={name}
         type="categorical"
-        style={{ backgroundColor: tagColor }}
+        style={{ backgroundColor: color }}
       />
     );
   });

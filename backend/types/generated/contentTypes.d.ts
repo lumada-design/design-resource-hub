@@ -691,9 +691,10 @@ export interface ApiBrandBrand extends Schema.SingleType {
   attributes: {
     brand_name: Attribute.String;
     brand_tagline: Attribute.String;
-    main_menu: Attribute.Text;
     copyright: Attribute.String;
-    secondary_menu: Attribute.Text;
+    main_menu: Attribute.Component<'navigation.menu-item', true>;
+    secondary_menu: Attribute.Component<'navigation.menu-item', true>;
+    contact_email: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -957,11 +958,8 @@ export interface ApiResourcePageResourcePage extends Schema.SingleType {
     draftAndPublish: true;
   };
   attributes: {
-    download_title: Attribute.String;
-    download_description: Attribute.Text;
-    download_button_label: Attribute.String;
-    download_button_target: Attribute.String;
-    champion_title: Attribute.String;
+    templates_section: Attribute.Component<'section.single-column'>;
+    champions_section: Attribute.Component<'section.single-column'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
