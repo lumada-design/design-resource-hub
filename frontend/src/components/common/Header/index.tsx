@@ -18,7 +18,8 @@ export const Header = () => {
 
   if (!brand) return <div className={classes.preload} />;
 
-  const { brand_name, brand_tagline, main_menu, contact_email } = brand.data.attributes;
+  const { brand_name, brand_tagline, main_menu, contact_email } =
+    brand.data.attributes;
   return (
     <>
       <div className={classes.area1}>

@@ -12,6 +12,7 @@ interface LinkNavProps {
   isButton?: boolean;
   variant?: HvButtonVariant | HvTypographyVariants;
   className?: string;
+  onClick?: (evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>, target: string) => void;
 }
 
 export const LinkNav = ({
@@ -20,6 +21,7 @@ export const LinkNav = ({
   isButton = false,
   variant,
   className,
+  onClick,
 }: LinkNavProps) => {
   const navigate = useNavigate();
   const isUrl = target?.includes("http");
@@ -29,11 +31,13 @@ export const LinkNav = ({
       <HvButton
         style={{ marginTop: 20 }}
         variant={variant as HvButtonVariant}
-        onClick={() =>
-          isUrl
-            ? window.open(target, "_blank", "noopener,noreferrer")
-            : navigate(target)
-        }
+        onClick={(evt) => {
+          onClick
+            ? onClick?.(evt, target)
+            : isUrl
+              ? window.open(target, "_blank", "noopener,noreferrer")
+              : navigate(target);
+        }}
         className={className}
       >
         {label}
@@ -46,6 +50,11 @@ export const LinkNav = ({
       variant={variant as HvTypographyVariants}
       component="a"
       href={target}
+      onClick={(evt) => {
+        onClick
+          ? onClick?.(evt, target)
+          : window.open(target, "_blank", "noopener,noreferrer");
+      }}
       target="_blank"
       className={className}
     >

@@ -9,6 +9,7 @@ const styles = {
     alignItems: "center",
     minHeight: 300,
     background: theme.colors.atmo2,
+    padding: `${theme.space.lg} ${theme.space.sm}`,
   }),
   container: css({
     display: "flex",
@@ -23,11 +24,12 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     flexDirection: "column",
-    alignItems: "center",
+    alignItems: "left",
     gap: theme.space.md,
     "@media screen and (min-width: 600px)": {
       flexDirection: "row",
-      gap: 130,
+      gap: theme.space.md,
+      alignItems: "center",
     },
   }),
   content: css({

@@ -1,6 +1,8 @@
+import { useState } from "react";
+import Cookies from 'js-cookie';
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
-import { Container, LinkNav } from "components/common";
+import { Container, LinkNav, RequestDialog } from "components/common";
 import { formatUrl } from "lib/utils";
 import classes from "./styles";
 
@@ -9,8 +11,34 @@ export const TemplatesSection = ({ data, page }) => {
   const { title, description, button_label, button_target } =
     page.attributes.templates_section;
 
+  const [isOpen, setIsOpen] = useState(false);
+  const [activeTarget, setActiveTarget] = useState('');
+
+  const checkCookieAndNavigate = (evt, target) => {
+    evt.preventDefault();
+
+    setActiveTarget(target);
+
+    if (Cookies.get('requestAccess')) {
+      navigate(target);
+    } else {
+      setIsOpen(true);
+    }
+  };
+
+  const navigate = (target) => {
+    setIsOpen(false);
+    window.open(target, "_blank", "noopener,noreferrer")
+  };
+
   return (
     <div className={classes.root}>
+      <RequestDialog
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+        onRequest={() => navigate(button_target)}
+        onAlreadyHave={() => navigate(activeTarget)}
+      />
       <Container classes={{ root: classes.content }}>
         <HvTypography variant="title3">{title}</HvTypography>
         <div className={classes.separator} />
@@ -27,6 +55,7 @@ export const TemplatesSection = ({ data, page }) => {
                   target={link}
                   variant="label"
                   className={classes.link}
+                  onClick={checkCookieAndNavigate}
                 />
               </div>
             );

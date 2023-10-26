@@ -6,7 +6,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     minHeight: 250,
-    padding: theme.space.sm,
+    padding: `${theme.space.lg} ${theme.space.sm}`,
   }),
   container: css({
     gap: theme.space.lg,

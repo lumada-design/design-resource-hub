@@ -5,7 +5,7 @@ const styles = {
   root: css({
     display: "flex",
     minHeight: 400,
-    padding: theme.space.sm,
+    padding: `${theme.space.lg} ${theme.space.sm}`,
     background: theme.colors.base_light,
   }),
   container: css({
@@ -32,6 +32,7 @@ const styles = {
     width: "100%",
     height: "100%",
     objectFit: "cover",
+    maxHeight: 350,
   }),
 };
 

@@ -10,7 +10,7 @@ export const BannerSection = ({ data }) => {
   const navigate = useNavigate();
 
   const { name, description, organization, resource_type } = data[0].attributes;
-  const { image, color } = resource_type.data.attributes;
+  const { image } = resource_type.data.attributes;
   const { name: orgName } = organization.data.attributes;
   const imageUrl = image.data?.attributes.url;
 
@@ -18,9 +18,7 @@ export const BannerSection = ({ data }) => {
     <div
       className={classes.root}
       style={{
-        background: `-webkit-linear-gradient(${color}, ${color}), url(${formatUrl(
-          imageUrl,
-        )}) no-repeat bottom / cover`,
+        background: `url(${formatUrl(imageUrl)}) no-repeat bottom / cover`,
       }}
     >
       <Container>
@@ -30,7 +28,6 @@ export const BannerSection = ({ data }) => {
             startIcon={<Backwards />}
             variant="secondaryGhost"
             onClick={() => navigate(-1)}
-            className={classes.button}
           >
             Back
           </HvButton>

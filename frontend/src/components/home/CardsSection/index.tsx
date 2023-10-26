@@ -6,6 +6,7 @@ import {
   HvCardMedia,
   HvTypography,
   HvEmptyState,
+  HvTooltip,
 } from "@hitachivantara/uikit-react-core";
 import { useNavigate } from "react-router-dom";
 
@@ -72,7 +73,20 @@ export const CardsSection = () => {
               />
               <HvCardHeader aria-label={name} title={name} />
               <HvCardContent>
-                <HvTypography>{description}</HvTypography>
+                <HvTooltip title={<HvTypography>{description}</HvTypography>}>
+                  <HvTypography
+                    style={{
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      display: "-webkit-box",
+                      lineClamp: 3,
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: "vertical",
+                    }}
+                  >
+                    {description}
+                  </HvTypography>
+                </HvTooltip>
               </HvCardContent>
               <HvCardContent>
                 <TagsList data={resource} />
