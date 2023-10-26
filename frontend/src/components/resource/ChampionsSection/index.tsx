@@ -21,11 +21,13 @@ export const ChampionsSection = ({ data, page }) => {
 
             return (
               <div key={champion.id} className={classes.content}>
-                <img
-                  src={formatUrl(avatarUrl)}
-                  alt="icon"
-                  className={classes.picture}
-                />
+                <div className={classes.imageContainer}>
+                  <img
+                    src={formatUrl(avatarUrl)}
+                    alt="icon"
+                    className={classes.image}
+                  />
+                </div>
                 <div className={classes.text}>
                   <HvTypography variant="caption1" style={{ fontWeight: 600 }}>
                     {name}|{job}

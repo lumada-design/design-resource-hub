@@ -37,9 +37,15 @@ const styles = {
     alignItems: "center",
     gap: theme.space.sm,
   }),
-  picture: css({
-    width: 80,
+  imageContainer: css({
+    maxWidth: 80,
+    maxHeight: 80,
+    overflow: "hidden",
     borderRadius: "50%",
+  }),
+  image: css({
+    width: "100%",
+    height: "auto",
   }),
   text: css({
     textAlign: "left",

@@ -1,16 +1,16 @@
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import {
   HvDialog,
   HvDialogTitle,
   HvDialogContent,
   HvDialogActions,
   HvButton,
-  HvCheckBox
+  HvCheckBox,
 } from "@hitachivantara/uikit-react-core";
 
 export const RequestDialog = ({ open, onClose, onRequest, onAlreadyHave }) => {
   const handleClick = () => {
-    Cookies.set('requestAccess', 'false', { expires: 365 })
+    Cookies.set("requestAccess", "false", { expires: 365 });
   };
 
   return (
@@ -24,8 +24,8 @@ export const RequestDialog = ({ open, onClose, onRequest, onAlreadyHave }) => {
         access.
         <br />
         <br />
-        Additionally, if you have already requested access and would prefer
-        not to receive this message in the future, you can select the checkbox
+        Additionally, if you have already requested access and would prefer not
+        to receive this message in the future, you can select the checkbox
         below.
         <br />
         <br />

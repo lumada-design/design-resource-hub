@@ -5,14 +5,12 @@ const styles = {
   root: css({
     display: "flex",
     position: "relative",
-    alignItems: "center",
     minHeight: 300,
+    padding: `${theme.space.md} 0`,
   }),
   text: css({
-    maxWidth: 650,
-  }),
-  button: css({
-    marginBottom: theme.space.sm,
+    marginTop: theme.space.sm,
+    maxWidth: 600,
   }),
 };
 

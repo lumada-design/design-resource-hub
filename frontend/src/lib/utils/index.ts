@@ -1,4 +1,5 @@
 import { API_URL } from "lib/api/constants";
+import { To } from "react-router-dom";
 
 /**
  * Format a string to replace all \n with new lines
@@ -17,21 +18,6 @@ export const formatText = (str?: string) => {
 export const formatUrl = (url: string) => {
   const isURL = /^(?:\w+:)?\/\/([^\s.]+\.\S{2}|localhost[:?\d]*)\S*$/.test(url);
   return isURL ? url : `${API_URL}${url}`;
-};
-
-/**
- *  Parse links from a string
- * @param links - The string to parse links from
- * @returns An array of links
- */
-export const parseLinks = (links: string) => {
-  return links
-    .split(";")
-    .map((link: string) => {
-      const [label, href] = link.replace(/(\r\n|\n|\r)/gm, "").split("|");
-      return label.length ? { label, href } : null;
-    })
-    .filter(Boolean);
 };
 
 /**
@@ -65,3 +51,9 @@ export const getResourceTypes = (resource) => {
 
   return resourceTypes;
 };
+
+/**
+ * Check if the current page has history
+ * @returns True if the current page has history
+ */
+export const hasHistory = () => window.history.length > 2;

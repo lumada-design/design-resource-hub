@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Cookies from 'js-cookie';
+import Cookies from "js-cookie";
 import { HvTypography } from "@hitachivantara/uikit-react-core";
 
 import { Container, LinkNav, RequestDialog } from "components/common";
@@ -12,14 +12,14 @@ export const TemplatesSection = ({ data, page }) => {
     page.attributes.templates_section;
 
   const [isOpen, setIsOpen] = useState(false);
-  const [activeTarget, setActiveTarget] = useState('');
+  const [activeTarget, setActiveTarget] = useState("");
 
   const checkCookieAndNavigate = (evt, target) => {
     evt.preventDefault();
 
     setActiveTarget(target);
 
-    if (Cookies.get('requestAccess')) {
+    if (Cookies.get("requestAccess")) {
       navigate(target);
     } else {
       setIsOpen(true);
@@ -28,7 +28,7 @@ export const TemplatesSection = ({ data, page }) => {
 
   const navigate = (target) => {
     setIsOpen(false);
-    window.open(target, "_blank", "noopener,noreferrer")
+    window.open(target, "_blank", "noopener,noreferrer");
   };
 
   return (

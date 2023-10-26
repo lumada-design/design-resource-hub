@@ -12,7 +12,10 @@ interface LinkNavProps {
   isButton?: boolean;
   variant?: HvButtonVariant | HvTypographyVariants;
   className?: string;
-  onClick?: (evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>, target: string) => void;
+  onClick?: (
+    evt: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    target: string,
+  ) => void;
 }
 
 export const LinkNav = ({
@@ -35,8 +38,8 @@ export const LinkNav = ({
           onClick
             ? onClick?.(evt, target)
             : isUrl
-              ? window.open(target, "_blank", "noopener,noreferrer")
-              : navigate(target);
+            ? window.open(target, "_blank", "noopener,noreferrer")
+            : navigate(target);
         }}
         className={className}
       >

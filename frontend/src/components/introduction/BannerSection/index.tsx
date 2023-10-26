@@ -1,10 +1,10 @@
-import { useNavigate } from "react-router-dom";
+import { To, useNavigate } from "react-router-dom";
 import { HvTypography, HvButton } from "@hitachivantara/uikit-react-core";
 import { Backwards } from "@hitachivantara/uikit-react-icons";
 
 import { Container } from "components/common";
 import classes from "./styles";
-import { formatUrl } from "lib/utils";
+import { formatUrl, hasHistory } from "lib/utils";
 
 export const BannerSection = ({ data }) => {
   const navigate = useNavigate();
@@ -21,15 +21,16 @@ export const BannerSection = ({ data }) => {
     >
       <Container>
         <span>
-          <HvButton
-            aria-label="Back"
-            startIcon={<Backwards />}
-            variant="secondaryGhost"
-            onClick={() => navigate(-1)}
-            className={classes.button}
-          >
-            Back
-          </HvButton>
+          {hasHistory() && (
+            <HvButton
+              aria-label="Back"
+              startIcon={<Backwards />}
+              variant="secondaryGhost"
+              onClick={() => navigate(-1)}
+            >
+              Back
+            </HvButton>
+          )}
           <HvTypography className={classes.text} variant="title1">
             {title}
           </HvTypography>
