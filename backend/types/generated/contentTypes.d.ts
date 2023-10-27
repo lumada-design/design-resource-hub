@@ -853,6 +853,41 @@ export interface ApiOrganizationOrganization extends Schema.CollectionType {
   };
 }
 
+export interface ApiRequestDialogRequestDialog extends Schema.SingleType {
+  collectionName: 'request_dialogs';
+  info: {
+    singularName: 'request-dialog';
+    pluralName: 'request-dialogs';
+    displayName: 'Request Dialog';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.Text;
+    button_1_label: Attribute.String;
+    button_2_label: Attribute.String;
+    dont_show: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::request-dialog.request-dialog',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::request-dialog.request-dialog',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiResourceResource extends Schema.CollectionType {
   collectionName: 'resources';
   info: {
@@ -1172,6 +1207,7 @@ declare module '@strapi/types' {
       'api::home-page.home-page': ApiHomePageHomePage;
       'api::introduction-page.introduction-page': ApiIntroductionPageIntroductionPage;
       'api::organization.organization': ApiOrganizationOrganization;
+      'api::request-dialog.request-dialog': ApiRequestDialogRequestDialog;
       'api::resource.resource': ApiResourceResource;
       'api::resource-category.resource-category': ApiResourceCategoryResourceCategory;
       'api::resource-page.resource-page': ApiResourcePageResourcePage;

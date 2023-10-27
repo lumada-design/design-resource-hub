@@ -6,35 +6,40 @@ import {
   HvDialogActions,
   HvButton,
   HvCheckBox,
+  HvTypography,
 } from "@hitachivantara/uikit-react-core";
 
+import { useRequestDialog } from "lib/api/requestDialog";
+import { formatText } from "lib/utils";
+import classes from "./styles";
+
 export const RequestDialog = ({ open, onClose, onRequest, onAlreadyHave }) => {
+  const { data: requestDialog } = useRequestDialog();
+
+  if (!requestDialog) return null;
+
+  const { title, content, button_1_label, button_2_label, dont_show } =
+    requestDialog.data.attributes;
+
   const handleClick = () => {
     Cookies.set("requestAccess", "false", { expires: 365 });
   };
 
   return (
     <HvDialog buttonTitle="Close" maxWidth="sm" open={open} onClose={onClose}>
-      <HvDialogTitle variant="info">
-        Do you need to request access?
-      </HvDialogTitle>
+      <HvDialogTitle variant="info">{title}</HvDialogTitle>
       <HvDialogContent indentContent>
-        We'd like to ensure you have the necessary access to the repositories.
-        If you don't have access yet, please click the button below to request
-        access.
-        <br />
-        <br />
-        Additionally, if you have already requested access and would prefer not
-        to receive this message in the future, you can select the checkbox
-        below.
-        <br />
-        <br />
-        <HvCheckBox label="Don’t show this again." onClick={handleClick} />
+        <HvTypography
+          style={{ whiteSpace: "pre-line" }}
+        >
+          {formatText(content)}
+        </HvTypography>
+        <HvCheckBox classes={{ root: classes.root }} label={dont_show} onClick={handleClick} />
       </HvDialogContent>
       <HvDialogActions>
-        <HvButton onClick={onRequest}>Request Access</HvButton>
+        <HvButton onClick={onRequest}>{button_1_label}</HvButton>
         <HvButton autoFocus variant="secondarySubtle" onClick={onAlreadyHave}>
-          I already have access
+          {button_2_label}
         </HvButton>
       </HvDialogActions>
     </HvDialog>
