@@ -1088,6 +1088,69 @@ export interface ApiTemplateTemplate extends Schema.CollectionType {
   };
 }
 
+export interface ApiTermsContributePageTermsContributePage
+  extends Schema.SingleType {
+  collectionName: 'terms_contribute_pages';
+  info: {
+    singularName: 'terms-contribute-page';
+    pluralName: 'terms-contribute-pages';
+    displayName: 'Terms Contribute Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::terms-contribute-page.terms-contribute-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::terms-contribute-page.terms-contribute-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTermsUsePageTermsUsePage extends Schema.SingleType {
+  collectionName: 'terms_use_pages';
+  info: {
+    singularName: 'terms-use-page';
+    pluralName: 'terms-use-pages';
+    displayName: 'Terms Use Page';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String;
+    content: Attribute.RichText;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::terms-use-page.terms-use-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::terms-use-page.terms-use-page',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1115,6 +1178,8 @@ declare module '@strapi/types' {
       'api::resource-tag.resource-tag': ApiResourceTagResourceTag;
       'api::resource-type.resource-type': ApiResourceTypeResourceType;
       'api::template.template': ApiTemplateTemplate;
+      'api::terms-contribute-page.terms-contribute-page': ApiTermsContributePageTermsContributePage;
+      'api::terms-use-page.terms-use-page': ApiTermsUsePageTermsUsePage;
     }
   }
 }

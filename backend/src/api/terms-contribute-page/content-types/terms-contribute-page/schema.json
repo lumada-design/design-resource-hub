@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "terms_contribute_pages",
+  "info": {
+    "singularName": "terms-contribute-page",
+    "pluralName": "terms-contribute-pages",
+    "displayName": "Terms Contribute Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

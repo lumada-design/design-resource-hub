@@ -1,0 +1,21 @@
+{
+  "kind": "singleType",
+  "collectionName": "terms_use_pages",
+  "info": {
+    "singularName": "terms-use-page",
+    "pluralName": "terms-use-pages",
+    "displayName": "Terms Use Page"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "content": {
+      "type": "richtext"
+    }
+  }
+}

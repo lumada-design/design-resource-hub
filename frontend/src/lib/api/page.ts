@@ -13,3 +13,11 @@ export const useIntroPage = () => {
 export const useResourcePage = () => {
   return useSWR(`/resource-page?&populate=deep`, fetcher);
 };
+
+export const useTermsUsePage = () => {
+  return useSWR(`/terms-use-page?&populate=deep`, fetcher);
+};
+
+export const useTermsContributePage = () => {
+  return useSWR(`/terms-contribute-page?&populate=deep`, fetcher);
+};
