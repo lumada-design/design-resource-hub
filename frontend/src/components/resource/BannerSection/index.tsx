@@ -1,4 +1,4 @@
-import { To, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { HvTypography, HvButton } from "@hitachivantara/uikit-react-core";
 import { Backwards } from "@hitachivantara/uikit-react-icons";
 
@@ -10,6 +10,9 @@ export const BannerSection = ({ data }) => {
   const navigate = useNavigate();
 
   const { name, description, organization, resource_type } = data[0].attributes;
+
+  if (!resource_type.data) return null;
+
   const { image } = resource_type.data.attributes;
   const { name: orgName } = organization.data.attributes;
   const imageUrl = image.data?.attributes.url;

@@ -41,6 +41,19 @@ const styles = {
   }),
   link: css({
     margin: `${theme.space.xs} 0 0 ${theme.space.sm}`,
+    "&:hover": {
+      textDecoration: "underline",
+    }
+  }),
+  imageContainer: css({
+    display: "flex",
+    alignItems: "center",
+    maxWidth: 35,
+    overflow: "hidden",
+  }),
+  image: css({
+    width: "100%",
+    height: "auto",
   }),
 };
 

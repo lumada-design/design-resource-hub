@@ -49,7 +49,13 @@ export const TemplatesSection = ({ data, page }) => {
 
             return (
               <div key={template.id} className={classes.icons}>
-                <img src={formatUrl(iconUrl)} alt="icon" />
+                <div className={classes.imageContainer}>
+                  <img
+                    src={formatUrl(iconUrl)}
+                    alt="icon"
+                    className={classes.image}
+                  />
+                </div>
                 <LinkNav
                   label={name}
                   target={link}
